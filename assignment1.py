@@ -26,15 +26,28 @@ def fizz_buzz(arr: StaticArray) -> StaticArray:
     TODO: Write this implementation
     """
     new_arr = StaticArray(arr.length())
+    print('Skylers tester print')
     for i in range(arr.length()):
-        if arr[i] % 3 == 0:
-            new_arr[i] = 'fizz'
-        if arr[i] % 5 ==0:
-            new_arr[i] = 'buzz'
+        print('i: ',i)
+        print('arr[i]',arr[i])
+        print('arr[i] % 3:', arr[i] % 3)
         if arr[i] % 3 == 0 and arr[i] % 5 == 0:
             new_arr[i] = 'fizzbuz'
+            print('we fizzbuzz')
+            continue;
+        if arr[i] % 3 == 0:
+            new_arr[i] = 'fizz'
+            print('we fizz')
+            continue;
+        if arr[i] % 5 ==0:
+            new_arr[i] = 'buzz'
+            print('we buzz')
+            continue;
         else:
             new_arr[i] = arr[i]
+            print('we elsed')
+
+
     return new_arr
 
 # ------------------- PROBLEM 3 - REVERSE -----------------------------------
