@@ -11,7 +11,15 @@ def min_max(arr: StaticArray) -> (int, int):
     """
     TODO: Write this implementation
     """
-    pass
+    min = arr[0]
+    max = arr[0]
+    for i in range(arr.length()):
+        if arr[i] < min:
+            min = arr[i]
+        if arr[i] > max:
+            max = arr[i]
+    my_tuple = (min,max)
+    return my_tuple
 # ------------------- PROBLEM 2 - FIZZ_BUZZ ---------------------------------
 def fizz_buzz(arr: StaticArray) -> StaticArray:
     """

@@ -104,3 +104,7 @@ if __name__ == "__main__":
     forbidden_list = [None] * 10
     print(type(arr))
     print(type(forbidden_list))
+
+    print('testicles',arr[0],arr[1],arr[2],arr[3],arr[4])
+    for i in range(arr.length()):
+        print(arr[i])
