@@ -25,7 +25,18 @@ def fizz_buzz(arr: StaticArray) -> StaticArray:
     """
     TODO: Write this implementation
     """
-    pass
+    new_arr = StaticArray(arr.length())
+    for i in range(arr.length()):
+        if arr[i] % 3 == 0:
+            new_arr[i] = 'fizz'
+        if arr[i] % 5 ==0:
+            new_arr[i] = 'buzz'
+        if arr[i] % 3 == 0 and arr[i] % 5 == 0:
+            new_arr[i] = 'fizzbuz'
+        else:
+            new_arr[i] = arr[i]
+    return new_arr
+
 # ------------------- PROBLEM 3 - REVERSE -----------------------------------
 def reverse(arr: StaticArray) -> None:
     """
