@@ -9,7 +9,7 @@ from static_array import *
 # ------------------- PROBLEM 1 - MIN_MAX -----------------------------------
 def min_max(arr: StaticArray) -> (int, int):
     """
-    TODO: Write this implementation
+    sets the min/max to initial element and compares both to each element to see if it should overwrite depending on if the value is larger or smaller
     """
     min = arr[0]
     max = arr[0]
@@ -23,29 +23,22 @@ def min_max(arr: StaticArray) -> (int, int):
 # ------------------- PROBLEM 2 - FIZZ_BUZZ ---------------------------------
 def fizz_buzz(arr: StaticArray) -> StaticArray:
     """
-    TODO: Write this implementation
+    This uses a forloop and compares values using if statements to check if it should rewrite the value of the new_area else it just copies the value
     """
     new_arr = StaticArray(arr.length())
-    print('Skylers tester print')
     for i in range(arr.length()):
-        print('i: ',i)
-        print('arr[i]',arr[i])
-        print('arr[i] % 3:', arr[i] % 3)
+
         if arr[i] % 3 == 0 and arr[i] % 5 == 0:
-            new_arr[i] = 'fizzbuz'
-            print('we fizzbuzz')
+            new_arr[i] = 'fizzbuzz'
             continue;
         if arr[i] % 3 == 0:
             new_arr[i] = 'fizz'
-            print('we fizz')
             continue;
         if arr[i] % 5 ==0:
             new_arr[i] = 'buzz'
-            print('we buzz')
             continue;
         else:
             new_arr[i] = arr[i]
-            print('we elsed')
 
 
     return new_arr
