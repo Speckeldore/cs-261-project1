@@ -45,10 +45,11 @@ def fizz_buzz(arr: StaticArray) -> StaticArray:
 
 # ------------------- PROBLEM 3 - REVERSE -----------------------------------
 def reverse(arr: StaticArray) -> None:
-    """
-    TODO: Write this implementation
-    """
-    pass
+    '''add each element'''
+    for i in range(arr.length()):
+        j = arr[i]
+        arr[i] = arr[arr.length()-i-1]
+        arr[arr.length()-i-1] = j
 # ------------------- PROBLEM 4 - ROTATE ------------------------------------
 def rotate(arr: StaticArray, steps: int) -> StaticArray:
     """
