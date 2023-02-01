@@ -45,21 +45,28 @@ def fizz_buzz(arr: StaticArray) -> StaticArray:
 
 # ------------------- PROBLEM 3 - REVERSE -----------------------------------
 def reverse(arr: StaticArray) -> None:
-    '''add each element'''
-    print("Skyler's Reverse")
+    '''iterates half way through switching the first and last elements of the array (i and its corresponing end element)'''
+
     for i in range(arr.length()//2):
         j = arr[i]
-        print('j: ',j)
         arr[i] = arr[arr.length()-i-1]
-        print('arr[i]: ',arr[i])
         arr[arr.length()-i-1] = j
-        print('arr[arr.length()-i-1]: ',arr[arr.length()-i-1])
 # ------------------- PROBLEM 4 - ROTATE ------------------------------------
 def rotate(arr: StaticArray, steps: int) -> StaticArray:
     """
     TODO: Write this implementation
     """
-    pass
+    if steps <= 0:
+        return
+    else:
+        for k in range(steps):
+            last = arr[arr.length()-1]
+
+            for i in reversed(range(arr.length() - 1)):
+                arr[i + 1] = arr[i]
+            arr[0] = last
+
+
 # ------------------- PROBLEM 5 - SA_RANGE ----------------------------------
 def sa_range(start: int, end: int) -> StaticArray:
     """
