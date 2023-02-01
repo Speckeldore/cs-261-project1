@@ -160,7 +160,7 @@ def count_sort(arr: StaticArray) -> StaticArray:
         carr[index] = 0
     for i in range(arr.length()):
         carr[arr[i]-min] = carr[arr[i]-min] + 1
-    for i in range(carr.length()):
+    for i in reversed(range(carr.length())):
         if carr[i] != 0:
             for j in range(carr[i]):
                 newarr[initial] = i + min
