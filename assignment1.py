@@ -56,7 +56,15 @@ def rotate(arr: StaticArray, steps: int) -> StaticArray:
     """
     TODO: Write this implementation
     """
-    if steps <= 0:
+    if steps == 0:
+        return arr
+    if steps < 0:
+        steps = abs(steps)
+        for k in range(steps):
+            first = arr[0]
+            for i in range(arr.length() - 1):
+                arr[i] = arr[i + 1]
+            arr[arr.length() - 1] = first
         return
     else:
         for k in range(steps):
