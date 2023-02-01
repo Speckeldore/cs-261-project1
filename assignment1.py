@@ -101,7 +101,7 @@ def is_sorted(arr: StaticArray) -> int:
 # ------------------- PROBLEM 7 - FIND_MODE -----------------------------------
 def find_mode(arr: StaticArray) -> (int, int):
     counter = 1
-    currentmode = 0
+    currentmode = 1
     indice = 0
     if arr.length() == 1:
         return (arr[0],1)
