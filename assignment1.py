@@ -56,24 +56,25 @@ def rotate(arr: StaticArray, steps: int) -> StaticArray:
     """
     TODO: Write this implementation
     """
+    narr = arr
     if steps == 0:
-        return arr
+        return narr
     if steps < 0:
         steps = abs(steps)
         for k in range(steps):
-            first = arr[0]
-            for i in range(arr.length() - 1):
-                arr[i] = arr[i + 1]
-            arr[arr.length() - 1] = first
-        return
+            first = narr[0]
+            for i in range(narr.length() - 1):
+                narr[i] = narr[i + 1]
+            narr[narr.length() - 1] = first
+        return narr
     else:
         for k in range(steps):
-            last = arr[arr.length()-1]
+            last = narr[narr.length()-1]
 
-            for i in reversed(range(arr.length() - 1)):
-                arr[i + 1] = arr[i]
-            arr[0] = last
-    return arr
+            for i in reversed(range(narr.length() - 1)):
+                narr[i + 1] = narr[i]
+            narr[0] = last
+    return narr
 
 # ------------------- PROBLEM 5 - SA_RANGE ----------------------------------
 def sa_range(start: int, end: int) -> StaticArray:
