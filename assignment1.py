@@ -100,9 +100,25 @@ def is_sorted(arr: StaticArray) -> int:
         return 0
 # ------------------- PROBLEM 7 - FIND_MODE -----------------------------------
 def find_mode(arr: StaticArray) -> (int, int):
-    """
-    TODO: Write this implementation
-    """
+    counter = 1
+    currentmode = 0
+    indice = None
+    for i in range(arr.length()-1):
+        print('i',i)
+        if arr[i] == arr[i+1]:
+            counter += 1
+        else:
+            if currentmode > counter:
+                counter = 0
+                continue;
+            else:
+                currentmode = counter
+                indice = i
+                counter = 0
+    if counter > currentmode:
+        currentmode = counter
+        indice = i
+    return (arr[indice],currentmode)
     pass
 # ------------------- PROBLEM 8 - REMOVE_DUPLICATES -------------------------
 def remove_duplicates(arr: StaticArray) -> StaticArray:

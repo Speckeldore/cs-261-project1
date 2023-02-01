@@ -51,5 +51,25 @@ def descending(arr):
             return False
     return True
 
-print(ascending([1,2,3,3,3,5,6,7,18,19]))
-print(descending([-5,4,3,2,1,0,-1,-2,-3]))
+def mode(arr):
+    counter = 1
+    currentmode = 0
+    indice = None
+    for i in range(len(arr)-1):
+        print('i',i)
+        if arr[i] == arr[i+1]:
+            counter += 1
+        else:
+            if currentmode > counter:
+                counter = 0
+                continue;
+            else:
+                currentmode = counter
+                indice = i
+                counter = 0
+    if counter > currentmode:
+        currentmode = counter
+        indice = i
+    return arr[indice]
+
+print('mode', mode([0,0,1,2,3,4,5,6,78,89]))
