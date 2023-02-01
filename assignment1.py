@@ -82,13 +82,13 @@ def is_sorted(arr: StaticArray) -> int:
     """
     def ascending(arr):
         for i in range(arr.length() - 1):
-            if arr[i] > arr[i + 1]:
+            if arr[i] >= arr[i + 1]:
                 return False
         return True
 
     def descending(arr):
         for i in range(arr.length() - 1):
-            if arr[i] < arr[i + 1]:
+            if arr[i] <= arr[i + 1]:
                 return False
         return True
 
