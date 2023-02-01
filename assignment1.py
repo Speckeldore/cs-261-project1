@@ -102,9 +102,11 @@ def is_sorted(arr: StaticArray) -> int:
 def find_mode(arr: StaticArray) -> (int, int):
     counter = 1
     currentmode = 0
-    indice = None
+    indice = 0
+    if arr.length() == 1:
+        return (arr[0],1)
     for i in range(arr.length()-1):
-        print('i',i)
+
         if arr[i] == arr[i+1]:
             counter += 1
         else:
