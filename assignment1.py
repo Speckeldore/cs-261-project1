@@ -151,6 +151,21 @@ def count_sort(arr: StaticArray) -> StaticArray:
     """
     TODO: Write this implementation
     """
+    max = min_max(arr)[1]
+    min = min_max(arr)[0]
+    initial = 0
+    newarr = StaticArray(arr.length())
+    carr = StaticArray(max-min +1)
+    for index in range(carr.length()):
+        carr[index] = 0
+    for i in range(arr.length()):
+        carr[arr[i]-min] = carr[arr[i]-min] + 1
+    for i in range(carr.length()):
+        if carr[i] != 0:
+            for j in range(carr[i]):
+                newarr[initial] = i + min
+                initial+=1
+    return newarr
     pass
 # ------------------- PROBLEM 10 - SORTED SQUARES ---------------------------
 def sorted_squares(arr: StaticArray) -> StaticArray:
