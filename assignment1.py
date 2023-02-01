@@ -80,7 +80,24 @@ def is_sorted(arr: StaticArray) -> int:
     """
     TODO: Write this implementation
     """
-    pass
+    def ascending(arr):
+        for i in range(arr.length() - 1):
+            if arr[i] > arr[i + 1]:
+                return False
+        return True
+
+    def descending(arr):
+        for i in range(arr.length() - 1):
+            if arr[i] < arr[i + 1]:
+                return False
+        return True
+
+    if ascending(arr) is True:
+        return 1
+    elif descending(arr) is True:
+        return -1
+    else:
+        return 0
 # ------------------- PROBLEM 7 - FIND_MODE -----------------------------------
 def find_mode(arr: StaticArray) -> (int, int):
     """
