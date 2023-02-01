@@ -65,7 +65,7 @@ def rotate(arr: StaticArray, steps: int) -> StaticArray:
             for i in reversed(range(arr.length() - 1)):
                 arr[i + 1] = arr[i]
             arr[0] = last
-
+    return arr
 
 # ------------------- PROBLEM 5 - SA_RANGE ----------------------------------
 def sa_range(start: int, end: int) -> StaticArray:
