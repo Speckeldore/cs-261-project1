@@ -110,7 +110,7 @@ def find_mode(arr: StaticArray) -> (int, int):
         if arr[i] == arr[i+1]:
             counter += 1
         else:
-            if currentmode > counter:
+            if currentmode >= counter:
                 counter = 1
                 continue;
             else:
