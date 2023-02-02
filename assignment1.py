@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
-# Course:       CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Name: Skyler Santos
+# OSU Email: santossk@oregonstate.edu
+# Course: 261 400 W2023    CS261 - Data Structures
+# Assignment: Assignment 1
+# Due Date: 1/30/23
+# Description: Assignment 1: 10 problems that have to do with manipulating standar arrays
 import random
 from static_array import *
 # ------------------- PROBLEM 1 - MIN_MAX -----------------------------------
@@ -54,8 +54,10 @@ def reverse(arr: StaticArray) -> None:
 # ------------------- PROBLEM 4 - ROTATE ------------------------------------
 def rotate(arr: StaticArray, steps: int) -> StaticArray:
     """
-    TODO: Write this implementation
+    Works for smaller lists but for larger ones ends up taking too much time
     """
+
+    return
     narr = StaticArray(arr.length())
     for i in range(arr.length()):
         narr[i] = arr[i]
@@ -87,7 +89,7 @@ def rotate(arr: StaticArray, steps: int) -> StaticArray:
 # ------------------- PROBLEM 5 - SA_RANGE ----------------------------------
 def sa_range(start: int, end: int) -> StaticArray:
     """
-    TODO: Write this implementation
+    find the
     """
     arr = StaticArray(abs(end-start)+1)
     if start < end:
@@ -104,7 +106,7 @@ def sa_range(start: int, end: int) -> StaticArray:
 # ------------------- PROBLEM 6 - IS_SORTED ---------------------------------
 def is_sorted(arr: StaticArray) -> int:
     """
-    TODO: Write this implementation
+    compares elements next to each other through the array
     """
     def ascending(arr):
         for i in range(arr.length() - 1):
@@ -126,6 +128,7 @@ def is_sorted(arr: StaticArray) -> int:
         return 0
 # ------------------- PROBLEM 7 - FIND_MODE -----------------------------------
 def find_mode(arr: StaticArray) -> (int, int):
+    """finds the mode by comparing if on element has the most recurrence"""
     counter = 1
     currentmode = 1
     indice = 0
@@ -151,7 +154,7 @@ def find_mode(arr: StaticArray) -> (int, int):
 # ------------------- PROBLEM 8 - REMOVE_DUPLICATES -------------------------
 def remove_duplicates(arr: StaticArray) -> StaticArray:
     """
-    TODO: Write this implementation
+    finds the duplicate and removes it by not adding it to the new array
     """
     if arr.length() == 1:
         newarr = StaticArray(1)
@@ -175,7 +178,7 @@ def remove_duplicates(arr: StaticArray) -> StaticArray:
 # ------------------- PROBLEM 9 - COUNT_SORT --------------------------------
 def count_sort(arr: StaticArray) -> StaticArray:
     """
-    TODO: Write this implementation
+    counts all the numbers of occurence and then writes the new array using the count array
     """
     max = min_max(arr)[1]
     min = min_max(arr)[0]
