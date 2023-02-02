@@ -103,8 +103,19 @@ def countingSort(array):
     for i in range(0, size):
         array[i] = output[i]
 
+def square_sort():
+    max = min_max(arr)[1]
+    min = min_max(arr)[0]
+    posele = 0
+    while arr[posele] <=0:
+        posele += 1
+    leftin = arr.length()-posele
+    rightin = posele - leftin
+    while leftin > -1 and rightin > -1:
 
 data = [4, 2, 2, 8, 3, 3, 1,19]
 countingSort(data)
 print("Sorted Array in Ascending Order: ")
 print(data)
+
+

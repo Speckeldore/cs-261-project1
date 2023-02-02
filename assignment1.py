@@ -56,7 +56,33 @@ def rotate(arr: StaticArray, steps: int) -> StaticArray:
     """
     TODO: Write this implementation
     """
-    pass
+    narr = StaticArray(arr.length())
+    for i in range(arr.length()):
+        narr[i] = arr[i]
+    if steps == 0:
+        return narr
+    if steps < 0:
+        steps = abs(steps)
+        if steps / arr.length() > 1.0:
+            steps = steps % arr.length()
+        for k in range(steps):
+            first = narr[0]
+            for i in range(narr.length() - 1):
+                narr[i] = narr[i + 1]
+            narr[narr.length() - 1] = first
+        return narr
+    else:
+        steps = abs(steps)
+        if steps / arr.length() > 1.0:
+            steps = steps % arr.length()
+        for k in range(steps):
+            last = narr[narr.length() - 1]
+
+            for i in reversed(range(narr.length() - 1)):
+                narr[i + 1] = narr[i]
+            narr[0] = last
+    return narr
+
 
 # ------------------- PROBLEM 5 - SA_RANGE ----------------------------------
 def sa_range(start: int, end: int) -> StaticArray:
@@ -172,6 +198,8 @@ def sorted_squares(arr: StaticArray) -> StaticArray:
     """
     TODO: Write this implementation
     """
+
+
     pass
 # ------------------- BASIC TESTING -----------------------------------------
 if __name__ == "__main__":
