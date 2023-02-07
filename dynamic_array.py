@@ -114,7 +114,7 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
-        if new_capacity <= 1 or new_capacity < self._size:
+        if new_capacity < 1 or new_capacity < self._size:
             return
         self._capacity = new_capacity
         newArr = StaticArray(self._capacity)
