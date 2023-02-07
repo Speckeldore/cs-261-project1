@@ -119,8 +119,7 @@ class DynamicArray:
         for value in range(0, self._size):
             newArr.set(value, self._data[value])
         self._data = newArr
-        pass
-        pass
+
     def append(self, value: object) -> None:
         """
         TODO: Write this implementation
@@ -129,7 +128,8 @@ class DynamicArray:
             self.resize(2*self._capacity)
         self._data[self._size] =  value
         self._size = self._size + 1
-        pass
+
+
     def insert_at_index(self, index: int, value: object) -> None:
         """
         TODO: Write this implementation
