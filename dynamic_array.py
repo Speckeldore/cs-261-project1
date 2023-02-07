@@ -114,7 +114,9 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
-        self._capacity = self._capacity + new_capacity
+        if new_capacity <= 1 or new_capacity < self._size:
+            return
+        self._capacity = new_capacity
         newArr = StaticArray(self._capacity)
         for value in range(0, self._size):
             newArr.set(value, self._data[value])
