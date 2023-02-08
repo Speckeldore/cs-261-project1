@@ -177,7 +177,6 @@ class DynamicArray:
             if start_index + size > self._size or size < 0:
                 raise DynamicArrayException
             narr = DynamicArray()
-            narr.resize(size)
             narrind = 0
             for i in range(start_index, start_index + size):
                 narr.append(self._data[i])
