@@ -173,6 +173,16 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
+        if start_index < self._size and start_index >= 0:
+            if start_index + size > self._size or size < 0:
+                raise DynamicArrayException
+            narr = DynamicArray()
+            narr.resize(size)
+            narrind = 0
+            for i in range(start_index, start_index + size):
+                narr.append(self._data[i])
+                narrind += 1
+        return narr
         pass
     def merge(self, second_da: "DynamicArray") -> None:
         """
