@@ -183,6 +183,8 @@ class DynamicArray:
             for i in range(start_index, start_index + size):
                 narr.append(self._data[i])
                 narrind += 1
+        else:
+            raise DynamicArrayException
         return narr
         pass
     def merge(self, second_da: "DynamicArray") -> None:
