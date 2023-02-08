@@ -240,6 +240,42 @@ def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     """
     TODO: Write this implementation
     """
+    if arr.length() == 1:
+        return (arr[0], 1)
+
+    modarr = DynamicArray()
+    modcount = 1
+    counter = 1
+    currentcount = 1
+    indice = 0
+    for i in range(0, arr.length()-1):
+
+        if arr[i] == arr[i+1]:
+            counter += 1
+            continue
+
+        else:
+            # if this isnt bigger than the current identifed mode
+            if currentcount > counter:
+                counter = 1
+                continue
+            # if this new coutned number is bigger than the previosuly identified mode
+            if currentcount < counter:
+                currentcount = counter
+                modarr = DynamicArray()
+                modarr.append(arr[i])
+                counter = 1
+            # if this new counted number is the same as the previously identified mode
+            if currentcount == counter:
+                modarr.append(arr[i])
+                counter = 1
+    if currentcount == counter:
+        modarr.append(arr[i+1])
+    if currentcount < counter:
+        modarr = DynamicArray()
+        modarr.append(arr[i+1])
+        currentcount = counter
+    return (modarr, currentcount)
     pass
 # ------------------- BASIC TESTING -----------------------------------------
 if __name__ == "__main__":
