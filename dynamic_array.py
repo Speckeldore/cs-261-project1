@@ -156,6 +156,18 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
+        if index < 0 or index > self._size -1:
+            raise DynamicArrayException
+        if self._size < (1/4)*self._capacity:
+            self.resize(2*self._size)
+            if (1/4)*self._capacity < 10:
+                self.resize(10)
+
+        for i in range(index, self._size - 1):
+            self._data[i] = self._data[i + 1]
+
+        self._size -= 1
+
         pass
     def slice(self, start_index: int, size: int) -> "DynamicArray":
         """
