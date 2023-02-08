@@ -209,6 +209,11 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
+        narr = DynamicArray()
+        for i in range(0, self._size):
+            if filter_func(self._data[i]) == True:
+                narr.append(self._data[i])
+        return narr
         pass
     def reduce(self, reduce_func, initializer=None) -> object:
         """
