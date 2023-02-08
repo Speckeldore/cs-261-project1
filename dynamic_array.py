@@ -136,7 +136,22 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
-        pass
+        if self._size == self._capacity:
+            self.resize(2*self._capacity)
+        if index < 0 or index > self._size:
+            raise DynamicArrayException
+        if self._size == 0:
+            self._data[0] = value
+        if index == self._size:
+            self._data[index] = value
+
+        self._size += 1
+        for i in reversed(range(index,self._size-1)):
+            self._data[i+1] = self._data[i]
+            if i == index:
+                self._data.set(i,value)
+                return
+
     def remove_at_index(self, index: int) -> None:
         """
         TODO: Write this implementation
