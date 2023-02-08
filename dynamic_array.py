@@ -219,6 +219,19 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
+        if self._size == 0:
+            return initializer
+        if initializer == None:
+            initializer = self._data[0]
+            if self._size == 1:
+                return reduce_func(self._data[0], 0)
+        if self._size == 1 and initializer is not None:
+            return reduce_func(initializer,self._data[0])
+
+        for i in range(1, self._size):
+            value = reduce_func(initializer,self._data[i])
+            initializer = value
+        return value
         pass
 def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     """
