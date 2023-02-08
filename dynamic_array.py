@@ -225,6 +225,8 @@ class DynamicArray:
             initializer = self._data[0]
             if self._size == 1:
                 return reduce_func(self._data[0], 0)
+        else:
+            value = reduce_func(initializer,self._data[0])
         if self._size == 1 and initializer is not None:
             return reduce_func(initializer,self._data[0])
 
