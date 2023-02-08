@@ -227,10 +227,12 @@ class DynamicArray:
         #    return reduce_func(initializer, self._data[0])
         for i in range(0, self._size):
             if initializer == None:
+                if self._size == 1:
+                    return self._data[0]
                 initializer = self._data[0]
                 i += 1
                 if self._size == 1:
-                    return reduce_func(self._data[0], 0)
+                    return reduce_func(initializer, 0)
             value = reduce_func(initializer, self._data[i])
             initializer = value
 
