@@ -176,6 +176,9 @@ class DynamicArray:
         if start_index < self._size and start_index >= 0:
             if start_index + size > self._size or size < 0:
                 raise DynamicArrayException
+            if start_index < 0 or self._size == 0:
+                raise DynamicArrayException
+
             narr = DynamicArray()
             narrind = 0
             for i in range(start_index, start_index + size):
