@@ -200,6 +200,10 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
+        narr = DynamicArray()
+        for i in range(0,self._size):
+             narr.append(map_func(self._data[i]))
+        return narr
         pass
     def filter(self, filter_func) -> "DynamicArray":
         """
