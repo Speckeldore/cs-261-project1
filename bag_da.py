@@ -72,15 +72,12 @@ class Bag:
         """
 
         same_elements = 0
+        multiple = 0
         if self._da.length() != second_bag.size():
             return False
         for i in range(0,self._da.length()):
-            if second_bag.count(self._da[i]) > 0:
-                same_elements += 1
-        if same_elements == self._da.length():
-            return True
-        else:
-            return False
+            if self.count(i) != second_bag.count():
+                return False
         pass
     def __iter__(self):
         """
