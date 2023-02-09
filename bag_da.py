@@ -81,11 +81,18 @@ class Bag:
         """
         TODO: Write this implementation
         """
-        pass
+        self._index = 0
+        return self
     def __next__(self):
         """
         TODO: Write this implementation
         """
+        try:
+            value = self._da[index]
+        except DynamicArrayException:
+            raise StopIteration
+        self._index += 1
+        return value
         pass
 # ------------------- BASIC TESTING -----------------------------------------
 if __name__ == "__main__":
