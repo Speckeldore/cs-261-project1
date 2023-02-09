@@ -70,14 +70,12 @@ class Bag:
         """
         TODO: Write this implementation
         """
-
-        same_elements = 0
-        multiple = 0
         if self._da.length() != second_bag.size():
             return False
         for i in range(0,self._da.length()):
-            if self.count(i) != second_bag.count():
+            if self.count(self._da[i]) != second_bag.count(self._da[i]):
                 return False
+        return True
         pass
     def __iter__(self):
         """
