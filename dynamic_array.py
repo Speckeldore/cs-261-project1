@@ -242,7 +242,8 @@ def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     """
     modarr = DynamicArray()
     if arr.length() == 1:
-        return (modarr.append(arr[0]), 1)
+        modarr.append(arr[0])
+        return (modarr, 1)
 
     modcount = 1
     counter = 1
