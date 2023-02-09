@@ -89,7 +89,7 @@ class Bag:
         """
         #something
         try:
-            value = self._da[index]
+            value = self._da[self._index]
         except DynamicArrayException:
             raise StopIteration
         self._index += 1
