@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Skyler Santos
+# OSU Email: santossk@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: Assignment 2
+# Due Date: 2/8/23
+# Description: Assignment numba 2
 from dynamic_array import *
 class Bag:
     def __init__(self, start_bag=None):
@@ -70,6 +70,17 @@ class Bag:
         """
         TODO: Write this implementation
         """
+
+        same_elements = 0
+        if self._da.length() != second_bag.size():
+            return False
+        for i in range(0,self._da.length()):
+            if second_bag.count(self._da[i]) > 0:
+                same_elements += 1
+        if same_elements == self._da.length():
+            return True
+        else:
+            return False
         pass
     def __iter__(self):
         """
