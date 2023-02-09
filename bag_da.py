@@ -64,6 +64,7 @@ class Bag:
         """
         TODO: Write this implementation
         """
+        self._da = DynamicArray()
         pass
     def equal(self, second_bag: "Bag") -> bool:
         """
