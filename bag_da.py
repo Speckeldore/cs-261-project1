@@ -54,6 +54,11 @@ class Bag:
         """
         TODO: Write this implementation
         """
+        count = 0
+        for i in range(0,self._da.length()):
+            if self._da[i] == value:
+                count += 1
+        return count
         pass
     def clear(self) -> None:
         """
