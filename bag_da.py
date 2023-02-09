@@ -87,6 +87,7 @@ class Bag:
         """
         TODO: Write this implementation
         """
+        #something
         try:
             value = self._da[index]
         except DynamicArrayException:
