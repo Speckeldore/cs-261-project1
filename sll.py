@@ -159,7 +159,7 @@ class LinkedList:
         cur  = self._head
         if start_index < 0 or start_index > self.length():
             raise SLLException
-        if size < 0:
+        if size < 0 or start_index + size > self.length():
             raise SLLException
         for i in range(start_index+1):
             cur = cur.next
