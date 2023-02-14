@@ -56,8 +56,6 @@ class Queue:
         self._sa.set(self._back,value)
         self._current_size += 1
         self._back = self._increment(self._back)
-        print("staic array",self._sa)
-        print(self)
         #when you need to make the static array bigger
         #self._double_que
 
@@ -81,6 +79,7 @@ class Queue:
         """
         TODO: Write this implementation
         """
+        return self._sa.get(self._front)
         pass
     # The method below is optional, but recommended, to implement. #
     # You may alter it in any way you see fit.                     #
