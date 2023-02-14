@@ -13,11 +13,12 @@ class QueueException(Exception):
 class Queue:
     def __init__(self) -> None:
         """Initialize new queue based on Static Array."""
-        self._sa = StaticArray(5)
+        self._sa = StaticArray(4)
         self._front = 0
-        self._back = -1
+        self._back = 0
         self._current_size = 0
-        self._capacity = 5
+        self._capacity = 4
+
     def __str__(self) -> str:
         """Override string method to provide more readable output."""
         size = self._current_size
@@ -50,15 +51,28 @@ class Queue:
         """
         TODO: Write this implementation
         """
-        self._sa.set(self.size(),value)
+        if self._current_size == self._capacity:
+            self._double_queue()
+        self._sa.set(self._back,value)
         self._current_size += 1
+        self._back = self._increment(self._back)
+        print("enque :::",self._sa)
+        print("self.fornt",self._front)
         #when you need to make the static array bigger
+        #self._double_que
+
+        #whether you can just place a value or how to do the wraparround effect if theres stil space
 
         pass
     def dequeue(self) -> object:
         """
         TODO: Write this implementation
         """
+        value = self._sa.get(self._front)
+        self._sa.set(self._front,None)
+        self._front = self._increment(self._front)
+        self._current_size -= 1
+        return value
         pass
     def front(self) -> object:
         """
@@ -71,6 +85,18 @@ class Queue:
         """
         TODO: Write this implementation
         """
+        newQue = Queue()
+        newQue._sa = StaticArray(2*self._capacity)
+        head = self._front
+        for i in range(self.size()):
+            newQue._sa.set(i,self._sa.get(head))
+            head = self._increment(head)
+        print("1double que :::", self._sa)
+        self._sa = newQue._sa
+        print("2double que :::", self._sa)
+        self._capacity = self._capacity*2
+        self._front = 0
+        self._back = self.size()
         pass
 # ------------------- BASIC TESTING -----------------------------------------
 if __name__ == "__main__":
