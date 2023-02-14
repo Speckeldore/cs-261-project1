@@ -157,7 +157,7 @@ class LinkedList:
         """
         newll = LinkedList()
         cur  = self._head
-        if start_index < 0 or start_index > self.length():
+        if start_index < 0 or start_index > self.length()-1:
             raise SLLException
         if size < 0 or start_index + size > self.length():
             raise SLLException
