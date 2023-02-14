@@ -155,6 +155,21 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
+        newll = LinkedList()
+        cur  = self._head
+        if start_index < 0 or start_index > self.length():
+            raise SLLException
+        if size < 0:
+            raise SLLException
+        for i in range(start_index+1):
+            cur = cur.next
+
+        newll.insert_front(cur.value)
+        for i in range(size-1):
+            cur = cur.next
+            newll.insert_back(cur.value)
+        return newll
+
         pass
 if __name__ == "__main__":
     print("\n# insert_front example 1")
@@ -220,7 +235,7 @@ if __name__ == "__main__":
     print("\n# slice example 2")
     lst = LinkedList([10, 11, 12, 13, 14, 15, 16])
     print("Source:", lst)
-    slices = [(0, 7), (-1, 7), (0, 8), (2, 3), (5, 0), (5, 3), (6, 1)]
+    slices = [(0, 7), (-1, 7), (0, 8), (2, 3), (5, 0), (5, 3), (6, 1),(1, 1)]
     for index, size in slices:
         print("Start:", index, "Size:", size, end="")
         try:
