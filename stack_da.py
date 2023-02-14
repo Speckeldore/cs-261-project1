@@ -60,6 +60,10 @@ class Stack:
         """
         TODO: Write this implementation
         """
+        if self.size() == 0:
+            raise StackException
+        value = self._da.get_at_index(self.size()-1)
+        return value
         pass
 # ------------------- BASIC TESTING -----------------------------------------
 if __name__ == "__main__":
