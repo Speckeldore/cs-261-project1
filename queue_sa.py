@@ -56,8 +56,8 @@ class Queue:
         self._sa.set(self._back,value)
         self._current_size += 1
         self._back = self._increment(self._back)
-        print("enque :::",self._sa)
-        print("fronter enq", self._front)
+        print("staic array",self._sa)
+        print(self)
         #when you need to make the static array bigger
         #self._double_que
 
@@ -72,7 +72,7 @@ class Queue:
         value = self._sa.get(self._front)
         if value == None:
             raise QueueException
-        self._sa.set(self._front,None)
+        #self._sa.set(self._front,None)
         self._front = self._increment(self._front)
         self._current_size -= 1
         return value
