@@ -120,11 +120,11 @@ class LinkedList:
             self._head.next = None
             return True
         while cur.next != None:
-            prev = prev.next
-            cur = cur.next
             if cur.value == value:
                 prev.next = cur.next
                 return True
+            prev = prev.next
+            cur = cur.next
         return False
         pass
     def count(self, value: object) -> int:
