@@ -42,6 +42,7 @@ class Stack:
     def push(self, value: object) -> None:
         """
         TODO: Write this implementation
+        uses the dynamic array append method to add at the end of the array by using the last index of the array
         """
         self._da.append(value)
         pass
@@ -49,6 +50,8 @@ class Stack:
         """
         TODO: Write this implementation
         """
+        if self.size() == 0:
+            raise StackException
         value = self._da.get_at_index(self.size()-1)
         self._da.remove_at_index(self.size()-1)
         return value
