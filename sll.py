@@ -58,6 +58,7 @@ class LinkedList:
     def insert_front(self, value: object) -> None:
         """
         TODO: Write this implementation
+        creates new node of value, ataches everything after head to this new node and ataches this new node to the head
         """
         newNode = SLNode(value)
         newNode.next = self._head.next
@@ -66,6 +67,7 @@ class LinkedList:
     def insert_back(self, value: object) -> None:
         """
         TODO: Write this implementation
+        loops through until it reaches the back and inserts a value as a node at that .next
         """
         index = self._head
         for i in range(self.length()+1):
@@ -79,7 +81,10 @@ class LinkedList:
     def insert_at_index(self, index: int, value: object) -> None:
         """
         TODO: Write this implementation
+        indexes through the Linked List till it reaches the specified index and inserts a new value by attaching the end of the LL to the new node and attaching the front of the linked list to the node
+
         """
+
         if index < 0 or index > self.length():
             raise SLLException
         cur = self._head
@@ -92,6 +97,7 @@ class LinkedList:
     def remove_at_index(self, index: int) -> None:
         """
         TODO: Write this implementation
+        tracks through the linked list till it reaches the correct index and then cuts out the middle sections an reattaches the LL
         """
         if index < 0 or index > self.length()-1:
             raise SLLException
@@ -107,6 +113,19 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
+        prev = self._head
+        cur = self._head
+        cur = cur.next
+        if self.length() == 1 and self._head.next.value == value:
+            self._head.next = None
+            return True
+        while cur.next != None:
+            prev = prev.next
+            cur = cur.next
+            if cur.value == value:
+                prev.next = cur.next
+                return True
+        return False
         pass
     def count(self, value: object) -> int:
         """
