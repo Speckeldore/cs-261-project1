@@ -112,6 +112,7 @@ class LinkedList:
     def remove(self, value: object) -> bool:
         """
         TODO: Write this implementation
+        creates 2 indeices/trackers accounts for the base case then iterates through the loop till it reaches the value and snips it, if not it just return true
         """
         prev = self._head
         cur = self._head
@@ -131,6 +132,13 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
+        count = 0
+        cur = self._head
+        while cur != None:
+            if cur.value == value:
+                count +=1
+            cur = cur.next
+        return count
         pass
     def find(self, value: object) -> bool:
         """
