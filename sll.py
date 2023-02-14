@@ -144,6 +144,12 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
+        cur = self._head
+        while cur != None:
+            if cur.value == value:
+                return True
+            cur = cur.next
+        return False
         pass
     def slice(self, start_index: int, size: int) -> "LinkedList":
         """
