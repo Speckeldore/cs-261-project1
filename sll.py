@@ -119,7 +119,7 @@ class LinkedList:
         if self.length() == 1 and self._head.next.value == value:
             self._head.next = None
             return True
-        while cur.next != None:
+        while cur != None:
             if cur.value == value:
                 prev.next = cur.next
                 return True
