@@ -79,6 +79,8 @@ class Queue:
         """
         TODO: Write this implementation
         """
+        if self.size() == 0:
+            raise QueueException
         return self._sa.get(self._front)
         pass
     # The method below is optional, but recommended, to implement. #
