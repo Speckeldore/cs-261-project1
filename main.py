@@ -38,6 +38,7 @@ def remove_by_value(head,value):
     cur = cur.next
     if cur.val == value:
       break
+      break
   prev.next = cur.next
 
 

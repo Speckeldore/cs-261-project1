@@ -80,11 +80,28 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
+        if index < 0 or index > self.length():
+            raise SLLException
+        cur = self._head
+        for i in range(0,index):
+            cur = cur.next
+        newNode = SLNode(value)
+        newNode.next = cur.next
+        cur.next = newNode
         pass
     def remove_at_index(self, index: int) -> None:
         """
         TODO: Write this implementation
         """
+        if index < 0 or index > self.length()-1:
+            raise SLLException
+        prev = self._head
+        cur = self._head
+        cur = cur.next
+        for i in range(index):
+            prev = prev.next
+            cur = cur.next
+        prev.next = cur.next
         pass
     def remove(self, value: object) -> bool:
         """
