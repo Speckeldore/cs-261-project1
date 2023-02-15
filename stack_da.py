@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Skyler Santos
+# OSU Email: santossk@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: Assignment 3
+# Due Date: 2/13/23
+# Description: This is the stack made from a dynamic array
 from dynamic_array import *
 class StackException(Exception):
     """
@@ -49,6 +49,8 @@ class Stack:
     def pop(self) -> object:
         """
         TODO: Write this implementation
+        sets the value at an index to 0
+        but also saves the value to be returned using the dynamic array methods
         """
         if self.size() == 0:
             raise StackException
@@ -59,6 +61,9 @@ class Stack:
     def top(self) -> object:
         """
         TODO: Write this implementation
+        raises an excpetion if empty
+        returns value which is equal to the value at the end of the dynamic array
+        which represents the (top)
         """
         if self.size() == 0:
             raise StackException

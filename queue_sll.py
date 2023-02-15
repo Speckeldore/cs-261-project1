@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Skyler Santos
+# OSU Email: santossk@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: Assignment 3
+# Due Date: 2/13/23
+# Description: This is the Queue made out of SL Node chain
 from SLNode import SLNode
 class QueueException(Exception):
     """
@@ -54,6 +54,9 @@ class Queue:
     def enqueue(self, value: object) -> None:
         """
         TODO: Write this implementation
+        This method has cases for an empty stack and for only having 1 value in the stack
+        if those cases arent met then
+        it adds on to the existing stack and iterates the self._tail
         """
         if self._head == None:
             self._head = SLNode(value)
@@ -72,6 +75,9 @@ class Queue:
     def dequeue(self) -> object:
         """
         TODO: Write this implementation
+        this checks for an empty array, and an array with 1 element
+        also if the head and tail element are pointing at the same object
+        then it returns that value and resets head and tail to None
         """
         if self._tail == None and self._head == None:
             raise QueueException
@@ -94,6 +100,7 @@ class Queue:
     def front(self) -> object:
         """
         TODO: Write this implementation
+        Raises exception if empty and if not returns the head value
         """
         if self._head == None:
             raise QueueException

@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Skyler Santos
+# OSU Email: santossk@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: Assignment 3
+# Due Date: 2/13/23
+# Description: This is the linked list made from SLnodes
 from SLNode import *
 class SLLException(Exception):
     """
@@ -131,6 +131,7 @@ class LinkedList:
     def count(self, value: object) -> int:
         """
         TODO: Write this implementation
+        iterates through and counts up the amount of times it needs to itterate
         """
         count = 0
         cur = self._head
@@ -143,6 +144,7 @@ class LinkedList:
     def find(self, value: object) -> bool:
         """
         TODO: Write this implementation
+        itterates through until it finds a value or while not None and returns whether it is there or not
         """
         cur = self._head
         while cur != None:
@@ -154,6 +156,9 @@ class LinkedList:
     def slice(self, start_index: int, size: int) -> "LinkedList":
         """
         TODO: Write this implementation
+        starts at the iterates through to get to start
+        raises exceptions for out of index
+        it then inserts the values seen iterating size itterations
         """
         newll = LinkedList()
         cur  = self._head

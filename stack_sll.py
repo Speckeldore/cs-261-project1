@@ -1,9 +1,9 @@
-
-# OSU Email:
+# Name: Skyler Santos
+# OSU Email: santossk@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: Assignment 3
+# Due Date: 2/13/23
+# Description: made a stack from individual SLnodes
 from SLNode import SLNode
 class StackException(Exception):
     """
@@ -53,6 +53,9 @@ class Stack:
     def push(self, value: object) -> None:
         """
         TODO: Write this implementation
+        holds a case for if this stack is empty
+        if not is saves the previous chain
+        sets the head to a new node of value and attaches the chain to the head.next
         """
         if self._head == None:
             self._head = SLNode(value)
@@ -65,6 +68,8 @@ class Stack:
     def pop(self) -> object:
         """
         TODO: Write this implementation
+        checks if the stack is empty else it saves the value
+        iterates the head and returns the saved value
         """
         if self._head == None:
             raise StackException
@@ -75,6 +80,7 @@ class Stack:
     def top(self) -> object:
         """
         TODO: Write this implementation
+        Checks for empty and returns the value seen at head
         """
         if self._head == None:
             raise StackException

@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Skyler Santos
+# OSU Email: santossk@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: Assignment 3
+# Due Date: 2/13/23
+# Description: This made a queue based off of static array
 # Note: Changing any part of the pre-implemented methods (besides adding  #
 #       default parameters) will cause the Gradescope tests to fail.      #
 from static_array import StaticArray
@@ -15,7 +15,7 @@ class Queue:
         """Initialize new queue based on Static Array."""
         self._sa = StaticArray(4)
         self._front = 0
-        self._back = 0
+        self._back = -1
         self._current_size = 0
         self._capacity = 4
 
@@ -50,7 +50,13 @@ class Queue:
     def enqueue(self, value: object) -> None:
         """
         TODO: Write this implementation
+        sets the back to repsent the index of where the current value will be
+        then it looks for if a resize is needed
+        if not it just adds the values and back index
+        loops around to the front if were at the end of the array
         """
+        if self._back == -1:
+            self._back = 0
         if self._current_size == self._capacity:
             self._double_queue()
         self._sa.set(self._back,value)
@@ -65,6 +71,9 @@ class Queue:
     def dequeue(self) -> object:
         """
         TODO: Write this implementation
+        the dequeue recieves the value at front
+        if that value is non raises exception
+        i then moves/iterates the front to represent the next value
         """
 
         value = self._sa.get(self._front)
@@ -78,6 +87,8 @@ class Queue:
     def front(self) -> object:
         """
         TODO: Write this implementation
+        raises exception if empty
+        return the value at the front
         """
         if self.size() == 0:
             raise QueueException
@@ -88,6 +99,9 @@ class Queue:
     def _double_queue(self) -> None:
         """
         TODO: Write this implementation
+        builds a new queue and doubles its size
+        loops through the set the values from the previous array
+        head take care of the looping to the front
         """
         newQue = Queue()
         newQue._sa = StaticArray(2*self._capacity)
