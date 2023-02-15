@@ -80,6 +80,11 @@ class Queue:
             value = self._head.value
             self._head = None
             return value
+        if self._head == self._tail:
+            value = self._head.value
+            self._head = None
+            self._tail = None
+            return value
         value = self._head.value
         self._head = self._head.next
         return value
