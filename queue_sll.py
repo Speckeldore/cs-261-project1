@@ -95,6 +95,10 @@ class Queue:
         """
         TODO: Write this implementation
         """
+        if self._head == None:
+            raise QueueException
+            return
+        return self._head.value
         pass
 # ------------------- BASIC TESTING -----------------------------------------
 if __name__ == "__main__":
