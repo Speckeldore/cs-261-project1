@@ -102,7 +102,7 @@ class BST:
                     prev = prev.right
                 if last == 'left':
                     prev = prev.left
-                if value > cur.value:
+                if value >= cur.value:
                     cur = cur.right
                     last = 'right'
                 else:
