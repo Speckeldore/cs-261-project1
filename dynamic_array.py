@@ -90,6 +90,12 @@ class DynamicArray:
         DO NOT CHANGE THIS METHOD IN ANY WAY
         """
         return self._size == 0
+
+    def magic(self) -> None:
+        for i in range(self._size - 1, -1, -1):
+            self.append(self._data[i])
+            self.remove_at_index(i)
+
     def length(self) -> int:
         """
         Return number of elements stored in array
@@ -486,3 +492,15 @@ if __name__ == "__main__":
         da.append(case[x])
         mode, frequency = find_mode(da)
         print(f"{da}\nMode: {mode}, Frequency: {frequency}")
+    print("All new test: SKYLERS test")
+    case = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1]
+    da = DynamicArray()
+    for x in range(len(case)):
+        da.append(case[x])
+    print("BEFORE")
+    print(da)
+    da.magic()
+    print("BEFORE2")
+    print(da)x
+    da.insert_at_index(1,255)
+    print(da)
