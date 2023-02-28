@@ -136,7 +136,6 @@ class BST:
                 node = node.left
                 last = 'left'
             if node == None:
-                print("value does not exist")
                 return False
 
 
@@ -146,6 +145,9 @@ class BST:
                 parent.left = None
             if last == 'right':
                 parent.right = None
+            return True
+
+
         "node has one child"
         if node.left == None or node.right == None:
             if node.left is not None:
@@ -155,6 +157,7 @@ class BST:
                     parent.right = node.left
                 if last == None:
                     self._root = self._root.left
+                return True
             else:
                 if last == 'left':
                     parent.left = node.right
@@ -162,6 +165,7 @@ class BST:
                     parent.right = node.right
                 if last == None:
                     self._root = self._root.right
+                return True
         "If node has 2 children"
         if node.left is not None and node.right is not None:
             parents = node.right
@@ -172,17 +176,17 @@ class BST:
                     parents = parents.left
                 snode = snode.left
                 lasts = 1
-            print("next in line", snode, "snode parents", parents)
-            ###
+
             parents.left = snode.right
             if node.right is not snode:
                 snode.right = node.right
             snode.left = node.left
+
             if last == 'left':
                 parent.left = snode
             if last == 'right':
                 parent.right = snode
-            print("snoder", snode, "noder", node)
+            return True
 
 
     # Consider implementing methods that handle different removal scenarios; #
