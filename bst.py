@@ -239,9 +239,10 @@ class BST:
             queue = Queue()
         if node == 'start':
             node = self._root
+            if node == None:
+                return queue
         if node.left is not None:
             self.inorder_traversal(node.left, queue)
-        print('node value',node.value)
         queue.enqueue(node.value)
         if node.right is not None:
             self.inorder_traversal(node.right, queue)
