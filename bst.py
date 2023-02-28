@@ -120,7 +120,71 @@ class BST:
         """
         TODO: Write your implementation
         """
-        pass
+        parent = self._root
+        node = self._root
+        last = None
+        '''Should iterate till we get to the node'''
+        while node.value != value:
+            if last == 'right':
+                parent = parent.right
+            if last == 'left':
+                parent = parent.left
+            if value > node.value:
+                node = node.right
+                last = 'right'
+            else:
+                node = node.left
+                last = 'left'
+            if node == None:
+                print("value does not exist")
+                return False
+
+
+        "node has no children"
+        if node.left == None and node.right == None:
+            if last == 'left':
+                parent.left = None
+            if last == 'right':
+                parent.right = None
+        "node has one child"
+        if node.left == None or node.right == None:
+            if node.left is not None:
+                if last == 'left':
+                    parent.left = node.left
+                if last == 'right':
+                    parent.right = node.left
+                if last == None:
+                    self._root = self._root.left
+            else:
+                if last == 'left':
+                    parent.left = node.right
+                if last == 'right':
+                    parent.right = node.right
+                if last == None:
+                    self._root = self._root.right
+        "If node has 2 children"
+        if node.left is not None and node.right is not None:
+            parents = node.right
+            snode = node.right
+            lasts = 0
+            while snode.left is not None:
+                if lasts == 1:
+                    parents = parents.left
+                snode = snode.left
+                lasts = 1
+            print("next in line", snode, "snode parents", parents)
+            ###
+            parents.left = snode.right
+            if node.right is not snode:
+                snode.right = node.right
+            snode.left = node.left
+            if last == 'left':
+                parent.left = snode
+            if last == 'right':
+                parent.right = snode
+            print("snoder", snode, "noder", node)
+
+
     # Consider implementing methods that handle different removal scenarios; #
     # you may find that you're able to use some of them in the AVL.          #
     # Remove these comments.                                                 #
