@@ -168,6 +168,7 @@ class BST:
                 if last == None:
                     self._root = self._root.right
                 return True
+
         "If node has 2 children"
         if node.left is not None and node.right is not None:
             parents = node.right
@@ -178,16 +179,17 @@ class BST:
                     parents = parents.left
                 snode = snode.left
                 lasts = 1
-
-            parents.left = snode.right
+            if parents is not snode:
+                parents.left = snode.right
             if node.right is not snode:
                 snode.right = node.right
             snode.left = node.left
-
             if last == 'left':
                 parent.left = snode
             if last == 'right':
                 parent.right = snode
+            if last == None:
+                self._root = snode
             return True
 
 
