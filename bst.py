@@ -225,9 +225,9 @@ class BST:
         while node is not None:
             if node.value == value:
                 return True
-            if value > node.value:
+            if value >= node.value:
                 node = node.right
-            if value < node.value:
+            else:
                 node = node.left
         return False
         pass
