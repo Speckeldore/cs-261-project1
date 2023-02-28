@@ -145,6 +145,8 @@ class BST:
                 parent.left = None
             if last == 'right':
                 parent.right = None
+            if last == None:
+                self._root = None
             return True
 
 
