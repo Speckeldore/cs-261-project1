@@ -221,6 +221,15 @@ class BST:
         """
         TODO: Write your implementation
         """
+        node = self._root
+        while node is not None:
+            if node.value == value:
+                return True
+            if value > node.value:
+                node = node.right
+            if value < node.value:
+                node = node.left
+        return False
         pass
     def inorder_traversal(self) -> Queue:
         """
