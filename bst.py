@@ -231,10 +231,21 @@ class BST:
                 node = node.left
         return False
         pass
-    def inorder_traversal(self) -> Queue:
+    def inorder_traversal(self,node = 'start', queue = None) -> Queue:
         """
         TODO: Write your implementation
         """
+        if queue == None:
+            queue = Queue()
+        if node == 'start':
+            node = self._root
+        if node.left is not None:
+            self.inorder_traversal(node.left, queue)
+        print('node value',node.value)
+        queue.enqueue(node.value)
+        if node.right is not None:
+            self.inorder_traversal(node.right, queue)
+        return queue
         pass
     def find_min(self) -> object:
         """
