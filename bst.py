@@ -279,11 +279,16 @@ class BST:
         """
         TODO: Write your implementation
         """
+        if self._root == None:
+            return True
+        else:
+            return False
         pass
     def make_empty(self) -> None:
         """
         TODO: Write your implementation
         """
+        self._root = None
         pass
 # ------------------- BASIC TESTING -----------------------------------------
 if __name__ == '__main__':
