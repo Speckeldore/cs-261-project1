@@ -501,6 +501,6 @@ if __name__ == "__main__":
     print(da)
     da.magic()
     print("BEFORE2")
-    print(da)x
+    print(da)
     da.insert_at_index(1,255)
     print(da)
