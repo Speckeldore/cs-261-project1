@@ -22,7 +22,7 @@ class AVLNode(BSTNode):
         # new variables needed for AVL
         self.parent = None
         self.height = 0
-        self.balance = 0
+
     def __str__(self) -> str:
         """
         Override string method
@@ -92,45 +92,40 @@ class AVL(BST):
         prev = self._root
         last = None
         height = 0
-        rebalance = False
 
         "Initial case + iteration to the correct node"
         if cur == None:
             self._root = AVLNode(value)
             self._root.parent = None
+            return
 
         while cur is not None:
             if last == 'right':
                 prev = prev.right
             if last == 'left':
                 prev = prev.left
+
             if value >= cur.value:
-                cur.balance += 1
-                if cur.balance >= 2:
-                    rebalance = True
-                    nodeR = cur
                 cur = cur.right
                 last = 'right'
                 height += 1
             else:
-                cur.balance += -1
-                if cur.balance <= -2:
-                    rebalance = True
-                    nodeR = cur
                 cur = cur.left
                 last = 'left'
                 height += 1
+
         cur = AVLNode(value)
         cur.height = height
         cur.parent = prev
+
         if last == 'left':
             prev.left = cur
         if last == 'right':
             prev.right = cur
         #if rebalance == True:
         #   self._rebalance(nodeR)
-        self._update_height(self._root)
-        print("node",cur, "biggest height of the root", self._get_height(self._root))
+        self._update_height(self._root,value)
+        self._rebalance(cur)
         pass
     def remove(self, value: object) -> bool:
         """
@@ -159,125 +154,75 @@ class AVL(BST):
         TODO: Write your implementation
         """
         "leftside height"
-        if node is self._root and node.left is None and node.right is None:
-            return node.balance
-        side = Queue()
-        side.enqueue(None)
-        leftH =0
-        rightH =0
-        if node.left is not None:
-            side.dequeue()
-            side.enqueue("left")
-            self._balance_factor(node.left)
-            leftH = self._get_height(node.left)
+        if node is None:
+            return 0
+        return self._get_height(node.left) - self._get_height(node.right)
 
-
-        if node.right is not None:
-            side.dequeue()
-            side.enqueue("right")
-            self._balance_factor(node.right)
-            rightH = self._get_height(node.right)
-
-        node.balance = rightH - leftH
-        if node.balance == 0:
-            sider = side.dequeue()
-            if sider == "left":
-                node.balance = -1
-            if sider == "right":
-                node.balance = -1
-
-        return node.balance
-        pass
-
-    height = 0
-    maxi = 0
     def _get_height(self, node: AVLNode) -> int:
         """
         TODO: Write your implementation
         """
-        #if node.parent == None:
-        #    node.height = 0
-        #else:
-        #    node.height = node.parent.height + 1
-        global maxi
-        global height
-        print("height",height,"maxi",maxi)
-        if node.left is not None:
-            height += 1
-            if maxi < height:
-                maxi = height
-            self._get_height(node.left)
-
-
-        if node.right is not None:
-            height +=1
-            if maxi < height:
-                maxi = height
-            self._get_height(node.right)
-
-        return maxi
-        pass
-    def _rotate_left(self, node: AVLNode) -> AVLNode:
-        """
-        TODO: Write your implementation
-        """
-        if node is None or node.right is None:
-            "cant rotate left here"
-            return
-        child = node.right
-        child.parent = None
-        if child.left is not None:
-            node.right = child.left
-            node.right.parent = node
-        child.left = node
-        child.parent = node.parent
-        node.parent = child
-        self._update_height(node)
+        if node is None:
+            return 0
+        return node.height
         pass
     def _rotate_right(self, node: AVLNode) -> AVLNode:
         """
         TODO: Write your implementation
         """
         child = node.left
-        child.parent = None
-        if child.right is not None:
-            node.left = child.right
-            node.left.parent = node
+        carm = child.right
         child.right = node
-        child.parent = node.parent
-        node.parent = child
-        self._update_height(node)
+        node.left = carm
+        node.height = 1 + max(self._get_height(node.left), self._get_height(node.right))
+        child.height = 1 + max(self._get_height(child.left), self._get_height(child.right))
+        return child
+
         pass
-    def _update_height(self, node: AVLNode) -> None:
+    def _rotate_left(self, node: AVLNode) -> AVLNode:
         """
         TODO: Write your implementation
         """
-        queue = Queue()
-        if queue.is_empty() is True:
-            if node.parent == None:
-                queue.enqueue(0)
-            else:
-                queue.enqueue(node.parent.height +1)
+        child = node.right
+        carm = child.left
+        child.left = node
+        node.right = carm
+        node.height = 1 + max(self._get_height(node.left), self._get_height(node.right))
+        child.height = 1 + max(self._get_height(child.left),self._get_height(child.right))
+        return child
+        pass
+    def _update_height(self, node: AVLNode, value) -> None:
+        """
+        TODO: Write your implementation
+        """
+        if node is None:
+            return
+        elif value < node.value:
+            self._update_height(node.left, value)
+        else:
+            self._update_height(node.right,value)
+        node.height = 1 + max(self._get_height(node.left), self._get_height(node.right))
 
-        if node.left is not None:
-            node.left.height = queue.dequeue() +1
-            queue.enqueue(node.left.height)
-            self._update_height(node.left)
-
-        if node.right is not None:
-            node.right.height = queue.dequeue() + 1
-            queue.enqueue(node.right.height)
-            self._update_height(node.right)
-
-        recurse = queue.dequeue() -1
-        queue.enqueue(recurse)
-
-        return
         pass
     def _rebalance(self, node: AVLNode) -> None:
         """
         TODO: Write your implementation
         """
+        balance = self._balance_factor(node)
+        if balance > 1:
+            if node.value < node.left.value:
+                return self._rotate_right(node)
+            else:
+                node.left = self._rotate_left(node.left)
+                return self._rotate_right(node)
+
+        if balance < -1:
+            if value > node.right.value:
+                return self._rotate_left(node)
+            else:
+                node.right = self._rotate_right(node)
+                return self._rotate_left(node)
+        return
         pass
 # ------------------- BASIC TESTING -----------------------------------------
 if __name__ == '__main__':
