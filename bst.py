@@ -89,6 +89,7 @@ class BST:
     # ------------------------------------------------------------------ #
     def add(self, value: object) -> None:
         """
+        iterates to the correct postion and sets up a parent child connection
         TODO: Write your implementation
         """
         cur = self._root
@@ -118,6 +119,7 @@ class BST:
         pass
     def remove(self, value: object) -> bool:
         """
+        iterates to the value and removes that value if it has to re-atach nodes
         TODO: Write your implementation
         """
         parent = self._root
@@ -202,6 +204,8 @@ class BST:
         """
         TODO: Write your implementation
         """
+
+
         # remove node that has no subtrees (no left or right nodes)
         pass
     def _remove_one_subtree(self, remove_parent: BSTNode, remove_node: BSTNode) -> None:
@@ -220,6 +224,7 @@ class BST:
     def contains(self, value: object) -> bool:
         """
         TODO: Write your implementation
+        searches for the value using a while loop
         """
         node = self._root
         while node is not None:
@@ -234,6 +239,7 @@ class BST:
     def inorder_traversal(self,node = 'start', queue = None) -> Queue:
         """
         TODO: Write your implementation
+        uses recursion and searches through the loop
         """
         if queue == None:
             queue = Queue()
@@ -243,7 +249,7 @@ class BST:
                 return queue
         if node.left is not None:
             self.inorder_traversal(node.left, queue)
-        queue.enqueue(node.value)
+        queue.enqueue(node)
         if node.right is not None:
             self.inorder_traversal(node.right, queue)
         return queue
@@ -251,6 +257,7 @@ class BST:
     def find_min(self) -> object:
         """
         TODO: Write your implementation
+        returns the left most value or the root
         """
         node = self._root
         if self._root == None:
@@ -265,6 +272,7 @@ class BST:
     def find_max(self) -> object:
         """
         TODO: Write your implementation
+        searches for the right most value
         """
         node = self._root
         if self._root == None:
@@ -278,6 +286,7 @@ class BST:
     def is_empty(self) -> bool:
         """
         TODO: Write your implementation
+        looks at the root and returns true if it is empty
         """
         if self._root == None:
             return True
@@ -287,6 +296,7 @@ class BST:
     def make_empty(self) -> None:
         """
         TODO: Write your implementation
+        sets the root to none
         """
         self._root = None
         pass
