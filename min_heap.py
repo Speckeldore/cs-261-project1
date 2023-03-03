@@ -99,7 +99,7 @@ def heapsort(da: DynamicArray) -> None:
     """
     TODO: Write this implementation
     """
-    for i in range()
+
     pass
 # It's highly recommended that you implement the following optional          #
 # function for percolating elements down the MinHeap. You can call           #
