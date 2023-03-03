@@ -65,8 +65,10 @@ class MinHeap:
         """
         TODO: Write this implementation
         """
-        return self._heap[0]
-        pass
+        try:
+            return self._heap[0]
+        except:
+            raise MinHeapException
     def remove_min(self) -> object:
         """
         TODO: Write this implementation
@@ -108,15 +110,22 @@ def _percolate_down(da: DynamicArray, parent: int) -> None:
     """
     TODO: Write your implementation
     """
+
     if 2 * parent + 2 > da.length()-1:
+        if 2 * parent + 1 == da.length()-1:
+            if da[parent] > da[2 * parent + 1]:
+                da[parent], da[2 * parent + 1] = da[2*parent + 1], da[parent]
         return
     parentVal = da[parent]
     if parentVal > da[2*parent + 2] or parentVal > da[2*parent + 1]:
+        'Swap right'
         if da[2*parent + 2] < da[2*parent + 1]:
+            print("went right")
             #print("went right", "right:", da[2*parent + 2], "left:",da[2*parent + 1], "parent", da[parent])
             da[parent], da[2*parent + 2] = da[2*parent + 2], da[parent]
             _percolate_down(da,2*parent + 2)
         else:
+            print("went left")
             #print("went left", "right:", da[2*parent + 2], "left:",da[2*parent + 1], "parent", da[parent])
             #da[2*parent] < da[2*parent + 1]:
             da[parent], da[2*parent + 1] = da[2*parent + 1], da[parent]
@@ -151,6 +160,11 @@ if __name__ == '__main__':
     h = MinHeap(['fish', 'bird'])
     print(h)
     print(h.get_min(), h.get_min())
+    print("\nPDF - remove_min example Skyler")
+    h = MinHeap([8,9,10])
+    print(h.remove_min())
+
+    print("h after removeing the min",h)
     print("\nPDF - remove_min example 1")
     print("--------------------------")
     h = MinHeap([1, 10, 2, 9, 3, 8, 4, 7, 5, 6])
