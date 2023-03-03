@@ -54,25 +54,29 @@ class MinHeap:
             child = self._heap[ci]
             parent = self._heap[pi]
 
-
         pass
     def is_empty(self) -> bool:
         """
         TODO: Write this implementation
         """
-        print("here is array",self._heap)
-        print("here is the size", self._heap._size)
 
-        return self._heap._size is 0
+        return self._heap.length() == 0
     def get_min(self) -> object:
         """
         TODO: Write this implementation
         """
+        return self._heap[0]
         pass
     def remove_min(self) -> object:
         """
         TODO: Write this implementation
         """
+        min = self._heap[0]
+        self._heap[0] = self._heap[self._heap._size-1]
+        self._heap._size -= 1
+        _percolate_down(self._heap,0)
+        return min
+
         pass
     def build_heap(self, da: DynamicArray) -> None:
         """
@@ -83,16 +87,19 @@ class MinHeap:
         """
         TODO: Write this implementation
         """
+        return self._heap._size
         pass
     def clear(self) -> None:
         """
         TODO: Write this implementation
         """
+        self._heap = DynamicArray()
         pass
 def heapsort(da: DynamicArray) -> None:
     """
     TODO: Write this implementation
     """
+    for i in range()
     pass
 # It's highly recommended that you implement the following optional          #
 # function for percolating elements down the MinHeap. You can call           #
@@ -101,6 +108,19 @@ def _percolate_down(da: DynamicArray, parent: int) -> None:
     """
     TODO: Write your implementation
     """
+    if 2 * parent + 2 > da.length()-1:
+        return
+    parentVal = da[parent]
+    if parentVal > da[2*parent + 2] or parentVal > da[2*parent + 1]:
+        if da[2*parent + 2] < da[2*parent + 1]:
+            #print("went right", "right:", da[2*parent + 2], "left:",da[2*parent + 1], "parent", da[parent])
+            da[parent], da[2*parent + 2] = da[2*parent + 2], da[parent]
+            _percolate_down(da,2*parent + 2)
+        else:
+            #print("went left", "right:", da[2*parent + 2], "left:",da[2*parent + 1], "parent", da[parent])
+            #da[2*parent] < da[2*parent + 1]:
+            da[parent], da[2*parent + 1] = da[2*parent + 1], da[parent]
+            _percolate_down(da, 2*parent + 1)
     pass
 # ------------------- BASIC TESTING -----------------------------------------
 if __name__ == '__main__':
@@ -151,7 +171,7 @@ if __name__ == '__main__':
     print("Your MinHeap:")
     print(h)
     if h.get_min() == 500:
-        print("Error: input array and heap's underlying DA reference same object inmemory")
+        print("Error: input array and heap's underlying DA reference same object in memory")
     print("\nPDF - heapsort example 1")
     print("------------------------")
     da = DynamicArray([100, 20, 6, 200, 90, 150, 300])
