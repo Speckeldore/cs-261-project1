@@ -124,12 +124,12 @@ def _percolate_down(da: DynamicArray, parent: int) -> None:
     if parentVal > da[2*parent + 2] or parentVal > da[2*parent + 1]:
         'Swap right'
         if da[2*parent + 2] < da[2*parent + 1]:
-            print("went right")
+            #print("went right")
             #print("went right", "right:", da[2*parent + 2], "left:",da[2*parent + 1], "parent", da[parent])
             da[parent], da[2*parent + 2] = da[2*parent + 2], da[parent]
             _percolate_down(da,2*parent + 2)
         else:
-            print("went left")
+            #print("went left")
             #print("went left", "right:", da[2*parent + 2], "left:",da[2*parent + 1], "parent", da[parent])
             #da[2*parent] < da[2*parent + 1]:
             da[parent], da[2*parent + 1] = da[2*parent + 1], da[parent]
