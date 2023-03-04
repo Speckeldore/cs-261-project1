@@ -65,6 +65,7 @@ class MinHeap:
         """
         TODO: Write this implementation
         """
+        #hehe
         try:
             return self._heap[0]
         except:
