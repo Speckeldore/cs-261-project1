@@ -89,6 +89,7 @@ class MinHeap:
         TODO: Write this implementation
         """
         try:
+            self._heap = dynamic_array()
             for i in da:
                 self.add(i)
         except:
