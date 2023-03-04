@@ -74,11 +74,14 @@ class MinHeap:
         """
         TODO: Write this implementation
         """
-        min = self._heap[0]
-        self._heap[0] = self._heap[self._heap._size-1]
-        self._heap._size -= 1
-        _percolate_down(self._heap,0)
-        return min
+        try:
+            min = self._heap[0]
+            self._heap[0] = self._heap[self._heap._size-1]
+            self._heap._size -= 1
+            _percolate_down(self._heap,0)
+            return min
+        except:
+            raise MinHeapException
 
         pass
     def build_heap(self, da: DynamicArray) -> None:
