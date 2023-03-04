@@ -88,6 +88,11 @@ class MinHeap:
         """
         TODO: Write this implementation
         """
+        try:
+            for i in da:
+                self.add(i)
+        except:
+            raise MinHeapException
         pass
     def size(self) -> int:
         """
