@@ -87,7 +87,7 @@ class MinHeap:
     def build_heap(self, da: DynamicArray) -> None:
         """
         TODO: Write this implementation
-        """
+        do"""
         try:
             self._heap = da
             ranger = self.size()
