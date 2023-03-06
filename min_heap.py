@@ -87,12 +87,13 @@ class MinHeap:
     def build_heap(self, da: DynamicArray) -> None:
         """
         TODO: Write this implementation
-        do"""
+        """
         try:
             self._heap = da
             ranger = self.size()
-            for i in reversed(range(0,int(ranger/2)-1)):
+            for i in reversed(range(0,ranger//2-1)):
                 _percolate_down(self._heap,i)
+            return None
         except:
             print("didnt work")
             raise MinHeapException
