@@ -89,10 +89,12 @@ class MinHeap:
         TODO: Write this implementation
         """
         try:
-            self._heap = dynamic_array()
-            for i in da:
-                self.add(i)
+            self._heap = da
+            ranger = self.size()
+            for i in reversed(range(0,int(ranger/2)-1)):
+                _percolate_down(self._heap,i)
         except:
+            print("didnt work")
             raise MinHeapException
         pass
     def size(self) -> int:

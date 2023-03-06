@@ -1,6 +1,4 @@
-pi = 2
-ci = 5
-cis = ci
-ci = pi
-pi = cis + 5
-print("pi,ci",pi,ci)
+
+ranger = 10
+for pos in range(ranger//2, 0, -1):
+    print(pos)
