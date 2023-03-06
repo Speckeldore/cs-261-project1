@@ -89,7 +89,7 @@ class MinHeap:
         TODO: Write this implementation
         """
         self.clear()
-        for i in reversed(range(0, da._size // 2 - 1)):
+        for i in reversed(range(0, da._size // 2)):
             _percolate_down(da, i)
         for i in da:
             self._heap.append(i)
@@ -110,7 +110,7 @@ def heapsort(da: DynamicArray) -> None:
     """
     TODO: Write this implementation
     """
-    
+
 
 
     pass
@@ -189,6 +189,10 @@ if __name__ == '__main__':
     print(h)
     h.build_heap(da)
     print(h)
+    da = DynamicArray([90943, -41284, -3100, -73248])
+    h.build_heap(da)
+    print(h)
+
     print("--------------------------")
     print("Inserting 500 into input DA:")
     da[0] = 500
