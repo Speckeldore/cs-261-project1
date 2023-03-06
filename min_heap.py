@@ -88,15 +88,9 @@ class MinHeap:
         """
         TODO: Write this implementation
         """
-        try:
-            self._heap = da
-            ranger = self.size()
-            for i in reversed(range(0,ranger//2-1)):
-                _percolate_down(self._heap,i)
-            return None
-        except:
-            print("didnt work")
-            raise MinHeapException
+        heapsort(da)
+        for i in da:
+            self._heap.append(i)
         pass
     def size(self) -> int:
         """
@@ -114,6 +108,9 @@ def heapsort(da: DynamicArray) -> None:
     """
     TODO: Write this implementation
     """
+    ranger = da._size
+    for i in reversed(range(0, ranger // 2 - 1)):
+        _percolate_down(da, i)
 
     pass
 # It's highly recommended that you implement the following optional          #
