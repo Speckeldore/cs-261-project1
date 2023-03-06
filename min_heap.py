@@ -88,7 +88,9 @@ class MinHeap:
         """
         TODO: Write this implementation
         """
-        heapsort(da)
+        self.clear()
+        for i in reversed(range(0, da._size // 2 - 1)):
+            _percolate_down(da, i)
         for i in da:
             self._heap.append(i)
         pass
@@ -108,9 +110,8 @@ def heapsort(da: DynamicArray) -> None:
     """
     TODO: Write this implementation
     """
-    ranger = da._size
-    for i in reversed(range(0, ranger // 2 - 1)):
-        _percolate_down(da, i)
+    
+
 
     pass
 # It's highly recommended that you implement the following optional          #
