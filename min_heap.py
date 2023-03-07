@@ -125,7 +125,7 @@ def heapsort(da: DynamicArray) -> None:
     """
     for i in reversed(range(0,da._size//2)):
         prelocatD3(da,da._size, i)
-        print("after prelocation3d",da)
+        #print("after prelocation3d",da)
     for j in reversed(range(0,da._size)):
         da[j], da[0] = da[0], da[j]
         prelocatD3(da,j,0)
@@ -207,6 +207,10 @@ def prelocatD3(da: DynamicArray,size: int, root: int) -> None:
     l = 2*root+1
     r = 2*root+2
     switched = False
+    #if r < size or l < size:
+        #if r < size:
+            #big = r,switched = True
+        #if l< size:
     if r < size:
         if da[big] > da[r]:
             big = r
@@ -217,6 +221,7 @@ def prelocatD3(da: DynamicArray,size: int, root: int) -> None:
             switched = True
     if switched == True:
         da[root],da[big] = da[big],da[root]
+        #da[parent], da[2 * parent + 1] = da[2 * parent + 1], da[parent]
         prelocatD3(da,size,big)
 
 # ------------------- BASIC TESTING -----------------------------------------
