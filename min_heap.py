@@ -222,7 +222,7 @@ def _prelocate_down3(da: DynamicArray,size: int, parent: int) -> None:
     if switched == True:
         da[parent],da[big] = da[big],da[parent]
         #da[parent], da[2 * parent + 1] = da[2 * parent + 1], da[parent]
-        prelocatD3(da,size,big)
+        _prelocate_down3(da,size,big)
 
 # ------------------- BASIC TESTING -----------------------------------------
 if __name__ == '__main__':
