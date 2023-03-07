@@ -33,6 +33,8 @@ class MinHeap:
     def add(self, node: object) -> None:
         """
         TODO: Write this implementation
+        appends the value
+        if it is greater than the root node it goes to the child compares and continues till it reaches its leaf spot
         """
         self._heap.append(node)
         ci = self._heap._size -1
@@ -58,12 +60,14 @@ class MinHeap:
     def is_empty(self) -> bool:
         """
         TODO: Write this implementation
+        if the length is 0 it will return false
         """
 
         return self._heap.length() == 0
     def get_min(self) -> object:
         """
         TODO: Write this implementation
+        returns the value at the first index of the heap
         """
         #hehe
         try:
@@ -73,6 +77,8 @@ class MinHeap:
     def remove_min(self) -> object:
         """
         TODO: Write this implementation
+        trys to remove the first value of the heap
+        it then rotates the last value in decrements the size and percolates that value down
         """
         try:
             min = self._heap[0]
@@ -87,6 +93,8 @@ class MinHeap:
     def build_heap(self, da: DynamicArray) -> None:
         """
         TODO: Write this implementation
+        uses the percolate down to reorganize the current structure nodes
+        it then adds in the values to the actual heap self._heap
         """
         self.clear()
         for i in reversed(range(0, da._size // 2)):
@@ -97,18 +105,23 @@ class MinHeap:
     def size(self) -> int:
         """
         TODO: Write this implementation
+        returns the intrisic value of size
         """
         return self._heap._size
         pass
     def clear(self) -> None:
         """
+        clears the current array by pointing to a new dynamic array that is empty
         TODO: Write this implementation
         """
         self._heap = DynamicArray()
         pass
 def heapsort(da: DynamicArray) -> None:
     """
+    uses the prelocate to prelocate smaller vallues to the end
     TODO: Write this implementation
+    it starts by organizing the dynamic array into a reverse heap
+    after it switches each consecutive value and then prelocates the value down if it is smaller
     """
     for i in reversed(range(0,da._size//2)):
         prelocatD3(da,da._size, i)
@@ -134,6 +147,7 @@ def heapsort(da: DynamicArray) -> None:
 def _percolate_down(da: DynamicArray, parent: int) -> None:
     """
     TODO: Write your implementation
+    compares which value is smaller and switches the smaller value to the current index and then recurivley jumps forward through the child nodes
     """
     if 2 * parent + 2 > da.length()-1:
         if 2 * parent + 1 == da.length()-1:
@@ -158,6 +172,7 @@ def _percolate_down(da: DynamicArray, parent: int) -> None:
 def _percolate_down2(da: DynamicArray, parent: int, start) -> None:
     """
     TODO: Write your implementation
+    2nd version of prelocate that prelocates small values down
     """
     if start == None:
         start = 0
@@ -187,6 +202,7 @@ def _percolate_down2(da: DynamicArray, parent: int, start) -> None:
             _percolate_down2(da,l-start,start)
     pass
 def prelocatD3(da: DynamicArray,size: int, root: int) -> None:
+    "3rd prelocate it prelocates smaller value down and takes in the root like the previous prelocator"
     big = root
     l = 2*root+1
     r = 2*root+2
