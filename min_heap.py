@@ -111,15 +111,15 @@ def heapsort(da: DynamicArray) -> None:
     TODO: Write this implementation
     """
     def prelocate(da,start,end):
-        for j in reversed(range(start, end//2 +1)):
-            #print(da, "parent:", da[j], "indexJ-start:", j-start)
+        for j in reversed(range(start, end+1)):
+            print(da, "parent:", da[j], "indexJ-start:", j-start)
             _percolate_down2(da, j-start, start)
 
 
     for i in range(0, da._size):
         start = i
         end = da._size-1
-        #print("prelocation #", i, "start",start, "end",end)
+        print("------------prelocation #", i, "start",start, "end",end, "------")
         prelocate(da, start, end)
 
 
@@ -171,11 +171,11 @@ def _percolate_down2(da: DynamicArray, parent: int, start) -> None:
     print('l', l, 'r', r, 'parent', parent + start)
     if r > da.length()-1:
         if l == da.length()-1:
-            #print("parent", da[parent+start], "left", da[l])
+            print("parent", da[parent+start], "left", da[l])
             if da[parent+start] < da[l]:
                 da[parent+start], da[l] = da[l], da[parent+start]
         return
-    #print("parent", da[parent+start], "right", da[r], "left", da[l])
+    print("parent", da[parent+start], "right", da[r], "left", da[l])
     parentVal = da[parent+start]
     if parentVal < da[r] or parentVal < da[l]:
         'Swap right'
