@@ -110,6 +110,25 @@ def heapsort(da: DynamicArray) -> None:
     """
     TODO: Write this implementation
     """
+    def prelocate(da,start,end):
+        for j in reversed(range(start, end//2 +1)):
+            print(da, "parent:", da[j], "indexJ-start:", j-start)
+            _percolate_down2(da, j-start, start)
+
+
+    for i in range(0, da._size):
+        start = i
+        end = da._size-1
+        print("prelocation #", i, "start",start, "end",end)
+        prelocate(da, start, end)
+
+
+
+
+
+
+
+
 
 
 
@@ -121,7 +140,6 @@ def _percolate_down(da: DynamicArray, parent: int) -> None:
     """
     TODO: Write your implementation
     """
-
     if 2 * parent + 2 > da.length()-1:
         if 2 * parent + 1 == da.length()-1:
             if da[parent] > da[2 * parent + 1]:
@@ -141,6 +159,37 @@ def _percolate_down(da: DynamicArray, parent: int) -> None:
             #da[2*parent] < da[2*parent + 1]:
             da[parent], da[2*parent + 1] = da[2*parent + 1], da[parent]
             _percolate_down(da, 2*parent + 1)
+    pass
+def _percolate_down2(da: DynamicArray, parent: int, start) -> None:
+    """
+    TODO: Write your implementation
+    """
+    if start == None:
+        start = 0
+    r = 2 * parent + 2 + start
+    l = 2 * parent + 1 + start
+    print('l', l, 'r', r, 'parent', parent + start)
+    if r > da.length()-1:
+        if l == da.length()-1:
+            print("parent", da[parent+start], "left", da[l])
+            if da[parent+start] < da[l]:
+                da[parent+start], da[l] = da[l], da[parent+start]
+        return
+    print("parent", da[parent+start], "right", da[r], "left", da[l])
+    parentVal = da[parent+start]
+    if parentVal < da[r] or parentVal < da[l]:
+        'Swap right'
+        if da[r] > da[l]:
+            #print("went right")
+            #print("went right", "right:", da[2*parent + 2], "left:",da[2*parent + 1], "parent", da[parent])
+            da[parent+start], da[r] = da[r], da[parent+start]
+            _percolate_down2(da,r-start,start)
+        else:
+            #print("went left")
+            #print("went left", "right:", da[2*parent + 2], "left:",da[2*parent + 1], "parent", da[parent])
+            #da[2*parent] < da[2*parent + 1]:
+            da[parent+start], da[l] = da[l], da[parent+start]
+            _percolate_down2(da,l-start,start)
     pass
 # ------------------- BASIC TESTING -----------------------------------------
 if __name__ == '__main__':
