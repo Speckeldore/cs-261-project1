@@ -110,17 +110,12 @@ def heapsort(da: DynamicArray) -> None:
     """
     TODO: Write this implementation
     """
-    def prelocate(da,start,end):
-        for j in reversed(range(start, end+1)):
-            print(da, "parent:", da[j], "indexJ-start:", j-start)
-            _percolate_down2(da, j-start, start)
-
-
-    for i in range(0, da._size):
-        start = i
-        end = da._size-1
-        print("------------prelocation #", i, "start",start, "end",end, "------")
-        prelocate(da, start, end)
+    for i in reversed(range(0,da._size//2)):
+        prelocatD3(da,da._size, i)
+        print("after prelocation3d",da)
+    for j in reversed(range(0,da._size)):
+        da[j], da[0] = da[0], da[j]
+        prelocatD3(da,j,0)
 
 
 
@@ -191,6 +186,23 @@ def _percolate_down2(da: DynamicArray, parent: int, start) -> None:
             da[parent+start], da[l] = da[l], da[parent+start]
             _percolate_down2(da,l-start,start)
     pass
+def prelocatD3(da: DynamicArray,size: int, root: int) -> None:
+    big = root
+    l = 2*root+1
+    r = 2*root+2
+    switched = False
+    if r < size:
+        if da[big] > da[r]:
+            big = r
+            switched = True
+    if l < size:
+        if da[big] > da[l]:
+            big = l
+            switched = True
+    if switched == True:
+        da[root],da[big] = da[big],da[root]
+        prelocatD3(da,size,big)
+
 # ------------------- BASIC TESTING -----------------------------------------
 if __name__ == '__main__':
     print("\nPDF - add example 1")
