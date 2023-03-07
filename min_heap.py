@@ -201,11 +201,11 @@ def _percolate_down2(da: DynamicArray, parent: int, start) -> None:
             da[parent+start], da[l] = da[l], da[parent+start]
             _percolate_down2(da,l-start,start)
     pass
-def prelocatD3(da: DynamicArray,size: int, root: int) -> None:
+def prelocatD3(da: DynamicArray,size: int, parent: int) -> None:
     "3rd prelocate it prelocates smaller value down and takes in the root like the previous prelocator"
-    big = root
-    l = 2*root+1
-    r = 2*root+2
+    big = parent
+    l = 2*parent+1
+    r = 2*parent+2
     switched = False
     #if r < size or l < size:
         #if r < size:
@@ -220,7 +220,7 @@ def prelocatD3(da: DynamicArray,size: int, root: int) -> None:
             big = l
             switched = True
     if switched == True:
-        da[root],da[big] = da[big],da[root]
+        da[parent],da[big] = da[big],da[parent]
         #da[parent], da[2 * parent + 1] = da[2 * parent + 1], da[parent]
         prelocatD3(da,size,big)
 
