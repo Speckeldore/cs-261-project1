@@ -124,11 +124,11 @@ def heapsort(da: DynamicArray) -> None:
     after it switches each consecutive value and then prelocates the value down if it is smaller
     """
     for i in reversed(range(0,da._size//2)):
-        prelocatD3(da,da._size, i)
+        _prelocate_down3(da,da._size, i)
         #print("after prelocation3d",da)
     for j in reversed(range(0,da._size)):
         da[j], da[0] = da[0], da[j]
-        prelocatD3(da,j,0)
+        _prelocate_down3(da,j,0)
 
 
 
@@ -201,7 +201,7 @@ def _percolate_down2(da: DynamicArray, parent: int, start) -> None:
             da[parent+start], da[l] = da[l], da[parent+start]
             _percolate_down2(da,l-start,start)
     pass
-def prelocatD3(da: DynamicArray,size: int, parent: int) -> None:
+def _prelocate_down3(da: DynamicArray,size: int, parent: int) -> None:
     "3rd prelocate it prelocates smaller value down and takes in the root like the previous prelocator"
     big = parent
     l = 2*parent+1
