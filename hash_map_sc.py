@@ -136,6 +136,8 @@ class HashMap:
         self._buckets = newH._buckets
         self._capacity = newH._capacity
         self._size = newH._size
+        self._loadF = newH._loadF
+        self._hash_function = newH._hash_function
         pass
     def get(self, key: str):
         """
