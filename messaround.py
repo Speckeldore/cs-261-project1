@@ -17,14 +17,4 @@ def hash_function_2(key: str) -> int:
         hash += (index + 1) * ord(letter)
         index += 1
     return hash
-print("------- hash function 1 -------")
-lister = ['a','b','c','d','e','f','f']
-for i in lister:
-    print(hash_function_1(i))
-print("------- hash function 2 -------")
-lister = ['a','b','c','d','e','f','f']
-for i in lister:
-    print(hash_function_2(i))
-print("------- hash function 3 -------")
-for i in range(10):
-    print('str' + str(i), i * 100)
+print(hash_function_1('key915')%10,hash_function_2('key915')%10)
