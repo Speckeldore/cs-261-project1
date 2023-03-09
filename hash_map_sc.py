@@ -136,7 +136,7 @@ class HashMap:
                 newH.put(j.key,j.value)
                 counter += 1
         self._buckets = newH._buckets
-        self._capacity = new_capacity
+        self._capacity = newH._capacity
         pass
     def get(self, key: str):
         """
