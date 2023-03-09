@@ -77,7 +77,7 @@ class HashMap:
         This method updates the key/value pair in the hash map
         """
         #simply adding the value
-        LL = self._buckets.get_at_index(self._hash_function(key)%self._capacity)
+        LL = self._buckets.get_at_index(hash_function_1(key)%self._capacity)
         # If the given key already exists in the hash map, its associated value must be replaced with the new value
         if LL.contains(key) is not None:
             LL.contains(key).value = value
