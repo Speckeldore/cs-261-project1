@@ -129,14 +129,14 @@ class HashMap:
         if self._is_prime(new_capacity) is False:
             new_capacity = self._next_prime(new_capacity)
         newH = HashMap(new_capacity,self._hash_function)
-        counter = 0
         for i in range(self._capacity):
             a = self._buckets[i]
             for j in a:
                 newH.put(j.key,j.value)
-                counter += 1
+
         self._buckets = newH._buckets
         self._capacity = newH._capacity
+        self._size = newH._size
         pass
     def get(self, key: str):
         """
