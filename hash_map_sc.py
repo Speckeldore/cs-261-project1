@@ -87,7 +87,7 @@ class HashMap:
         self._loadF = self._size/self._capacity
         # If the given key is not in the hash map, a new key/value pair must be added.
         # if load factor is greater than 1 double size to next prime number?
-        if self._loadF > 1:
+        if self._loadF >= 1:
             new_capacity = self._next_prime(2*self._capacity)
             self.resize_table(new_capacity)
             #for _ in range(self._capacity):

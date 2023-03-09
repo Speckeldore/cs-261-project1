@@ -18,3 +18,5 @@ def hash_function_2(key: str) -> int:
         index += 1
     return hash
 print(hash_function_1('key915')%10,hash_function_2('key915')%10)
+print(5/3)
+print((5/3)>1)
