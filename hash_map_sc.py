@@ -109,7 +109,7 @@ class HashMap:
         """
         TODO: Write this implementation
         """
-        return self._loadF
+        return self._size/self._capacity
         pass
     def clear(self) -> None:
         """
