@@ -88,9 +88,10 @@ class HashMap:
         # If the given key is not in the hash map, a new key/value pair must be added.
         # if load factor is greater than 1 double size to next prime number?
         if self._loadF > 1:
-            self._capacity = self._next_prime(2*self._capacity)
-            for _ in range(self._capacity):
-                self._buckets.append(LinkedList())
+            new_capacity = self._next_prime(2*self._capacity)
+            self.resize_table(new_capacity)
+            #for _ in range(self._capacity):
+                #self._buckets.append(LinkedList())
 
         pass
     def empty_buckets(self) -> int:
