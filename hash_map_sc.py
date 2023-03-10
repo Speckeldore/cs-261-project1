@@ -78,6 +78,7 @@ class HashMap:
         """
         self._loadF = self._size / self._capacity
         if self._loadF >= 1:
+            print("doubling size", 2*self._capacity)
             self.resize_table(2*self._capacity)
         #simply adding the value
         LL = self._buckets.get_at_index(self._hash_function(key)%self._capacity)
