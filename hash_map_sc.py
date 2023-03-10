@@ -78,7 +78,6 @@ class HashMap:
         """
         self._loadF = self._size / self._capacity
         if self._loadF >= 1:
-            print("doubling size", 2*self._capacity)
             self.resize_table(2*self._capacity)
         #simply adding the value
         LL = self._buckets.get_at_index(self._hash_function(key)%self._capacity)
@@ -132,14 +131,14 @@ class HashMap:
         for i in range(self._capacity):
             a = self._buckets[i]
             for j in a:
-                #newH.put(j.key,j.value)
-                LL = newH._buckets.get_at_index(newH._hash_function(j.key) % newH._capacity)
+                newH.put(j.key,j.value)
+                #LL = newH._buckets.get_at_index(newH._hash_function(j.key) % newH._capacity)
                 # If the given key already exists in the hash map, its associated value must be replaced with the new value
-                if LL.contains(j.key) is not None:
-                    LL.contains(j.key).value = j.value
-                else:
-                    LL.insert(j.key, j.value)
-                    newH._size += 1
+                #if LL.contains(j.key) is not None:
+                #    LL.contains(j.key).value = j.value
+                #else:
+                #    LL.insert(j.key, j.value)
+                #    newH._size += 1
 
         self._buckets = newH._buckets
         self._capacity = newH._capacity
