@@ -132,7 +132,14 @@ class HashMap:
         for i in range(self._capacity):
             a = self._buckets[i]
             for j in a:
-                newH.put(j.key,j.value)
+                #newH.put(j.key,j.value)
+                LL = newH._buckets.get_at_index(newH._hash_function(j.key) % newH._capacity)
+                # If the given key already exists in the hash map, its associated value must be replaced with the new value
+                if LL.contains(j.key) is not None:
+                    LL.contains(j.key).value = j.value
+                else:
+                    LL.insert(j.key, j.value)
+                    newH._size += 1
 
         self._buckets = newH._buckets
         self._capacity = newH._capacity
