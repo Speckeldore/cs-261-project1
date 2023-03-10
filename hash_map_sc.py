@@ -125,7 +125,7 @@ class HashMap:
         """
         if new_capacity < 1:
             return
-        while self._size/new_capacity <= 1
+        while self._size/new_capacity <= 1:
             if new_capacity < self._size:
                 new_capacity = self._size
                 if self._is_prime(new_capacity) is False:
