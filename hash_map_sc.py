@@ -126,7 +126,7 @@ class HashMap:
         if new_capacity < 1:
             return
         if new_capacity < self._size:
-            new_capacity = self._size:
+            new_capacity = self._size
             if self._is_prime(new_capacity) is False:
                 new_capacity = self._next_prime(new_capacity)
         if self._is_prime(new_capacity) is False:
