@@ -22,7 +22,6 @@ class HashMap:
             self._buckets.append(LinkedList())
         self._hash_function = function
         self._size = 0
-        self._loadF = 0
     def __str__(self) -> str:
         """
         Override string method to provide more readable output
@@ -77,8 +76,8 @@ class HashMap:
         This method updates the key/value pair in the hash map
         """
         #simply adding the value
-        self._loadF = self._size / self._capacity
-        if self._loadF >= 1:
+        loadF = self._size / self._capacity
+        if loadF >= 1:
             self.resize_table(2 * self._capacity)
 
         LL = self._buckets.get_at_index(self._hash_function(key)%self._capacity)
@@ -128,7 +127,6 @@ class HashMap:
             return
         #while new_capacity < self._size:
             #new_capacity = 2*new_capacity
-        self._size = 0
         if self._is_prime(new_capacity) is False:
             new_capacity = self._next_prime(new_capacity)
 
@@ -148,7 +146,6 @@ class HashMap:
         self._buckets = newH._buckets
         self._capacity = newH._capacity
         self._size = newH._size
-        self._loadF = newH._loadF
         self._hash_function = newH._hash_function
         pass
     def get(self, key: str):
