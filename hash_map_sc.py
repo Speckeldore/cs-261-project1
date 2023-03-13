@@ -122,31 +122,19 @@ class HashMap:
         """
         TODO: Write this implementation
         """''
-
         if new_capacity < 1:
             return
-        #while new_capacity < self._size:
-            #new_capacity = 2*new_capacity
         if self._is_prime(new_capacity) is False:
             new_capacity = self._next_prime(new_capacity)
 
-        newH = HashMap(new_capacity,self._hash_function)
-        for i in range(self._capacity):
-            a = self._buckets[i]
-            for j in a:
-                newH.put(j.key,j.value)
-                #LL = newH._buckets.get_at_index(newH._hash_function(j.key) % newH._capacity)
-                # If the given key already exists in the hash map, its associated value must be replaced with the new value
-                #if LL.contains(j.key) is not None:
-                #    LL.contains(j.key).value = j.value
-                #else:
-                #    LL.insert(j.key, j.value)
-                #    newH._size += 1
+        old_buckets = self._buckets
+        self._capacity = new_capacity
+        self.clear()
 
-        self._buckets = newH._buckets
-        self._capacity = newH._capacity
-        self._size = newH._size
-        self._hash_function = newH._hash_function
+        for i in range(old_buckets.length()):
+            a = old_buckets[i]
+            for j in a:
+                self.put(j.key,j.value)
         pass
     def get(self, key: str):
         """
