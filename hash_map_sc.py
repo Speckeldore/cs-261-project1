@@ -128,8 +128,8 @@ class HashMap:
             return
         while new_capacity < self._size:
             new_capacity = 2*new_capacity
-        if self._is_prime(new_capacity) is False:
-            new_capacity = self._next_prime(new_capacity)
+            if self._is_prime(new_capacity) is False:
+                new_capacity = self._next_prime(new_capacity)
 
         newH = HashMap(new_capacity,self._hash_function)
         for i in range(self._capacity):
