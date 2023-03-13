@@ -76,9 +76,6 @@ class HashMap:
         TODO: Write this implementation
         This method updates the key/value pair in the hash map
         """
-        self._loadF = self._size / self._capacity
-        if self._loadF >= 1:
-            self.resize_table(2*self._capacity)
         #simply adding the value
         LL = self._buckets.get_at_index(self._hash_function(key)%self._capacity)
         # If the given key already exists in the hash map, its associated value must be replaced with the new value
@@ -87,7 +84,9 @@ class HashMap:
         else:
             LL.insert(key,value)
             self._size += 1
-
+        self._loadF = self._size / self._capacity
+        if self._loadF >= 1:
+            self.resize_table(2 * self._capacity)
         # If the given key is not in the hash map, a new key/value pair must be added.
         # if load factor is greater than 1 double size to next prime number?
             #for _ in range(self._capacity):
