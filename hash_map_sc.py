@@ -122,11 +122,15 @@ class HashMap:
     def resize_table(self, new_capacity: int) -> None:
         """
         TODO: Write this implementation
-        """
+        """''
+
         if new_capacity < 1:
             return
+        while new_capacity < self._size:
+            new_capacity = 2*new_capacity
         if self._is_prime(new_capacity) is False:
             new_capacity = self._next_prime(new_capacity)
+
         newH = HashMap(new_capacity,self._hash_function)
         for i in range(self._capacity):
             a = self._buckets[i]
