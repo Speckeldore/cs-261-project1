@@ -89,36 +89,101 @@ class HashMap:
         """
         TODO: Write this implementation
         """
+        #print("Put was used", key, value)
+        loadF = self._size / self._capacity
+        if loadF >= 0.5:
+            self.resize_table(2 * self._capacity)
+
+        i = self._hash_function(key)%self._capacity
+        j = 0
+        if self._buckets[i] is not None:
+            while self._buckets[i] is not None:
+                if self._buckets[i].key == key:
+                    self._buckets[i].value = value
+                    #print("key already existed", self._buckets[i].key, key)
+                    return
+                i = (i + j ** 2) % self._capacity
+                j += 1
+                if j > self._capacity:
+                    #print("looped through to find empty spot but there are none")
+                    raise DynamicArrayException
+            self._buckets[i] = HashEntry(key, value)
+            self._size += 1
+            return
+        else:
+            #print("spot was empty", key, value)
+            self._buckets[i] = HashEntry(key,value)
+            self._size += 1
         pass
 
     def table_load(self) -> float:
         """
         TODO: Write this implementation
         """
+        return self._size/self._capacity
         pass
 
     def empty_buckets(self) -> int:
         """
         TODO: Write this implementation
         """
+        emp = 0
+        for i in range(self._capacity):
+            if self._buckets[i] == None:
+                emp +=1
+        return emp
         pass
 
     def resize_table(self, new_capacity: int) -> None:
         """
         TODO: Write this implementation
         """
+        "resize table was called"
+        if new_capacity < 1:
+            return
+        if self._is_prime(new_capacity) is False:
+            new_capacity = self._next_prime(new_capacity)
+        old_buckets = self._buckets
+        self._capacity = new_capacity
+        self.clear()
+
+
+        for i in range(old_buckets.length()):
+            i = old_buckets[i]
+            if i is not None:
+                if i.is_tombstone == False:
+                    self.put(i.key,i.value)
         pass
 
     def get(self, key: str) -> object:
         """
         TODO: Write this implementation
         """
+        k = 0
+        i = self._hash_function(key) % self._capacity
+        for j in range(self._capacity):
+            if self._buckets[i] == None:
+                return None
+            if self._buckets[i].key == key:
+                return self._buckets[i].value
+            i = (i + k ** 2) % self._capacity
+            k += 1
         pass
 
     def contains_key(self, key: str) -> bool:
         """
         TODO: Write this implementation
         """
+        k = 0
+        i = self._hash_function(key) % self._capacity
+        for j in range(self._capacity):
+            if self._buckets[i] == None:
+                return False
+            if self._buckets[i].key == key:
+                return True
+            i = (i + k ** 2) % self._capacity
+            k += 1
+        return False
         pass
 
     def remove(self, key: str) -> None:
@@ -131,6 +196,10 @@ class HashMap:
         """
         TODO: Write this implementation
         """
+        self._buckets = DynamicArray()
+        self._size = 0
+        for _ in range(self._capacity):
+            self._buckets.append(None)
         pass
 
     def get_keys_and_values(self) -> DynamicArray:
@@ -143,12 +212,22 @@ class HashMap:
         """
         TODO: Write this implementation
         """
+        self._index = 0
+
+        return self
         pass
 
     def __next__(self):
         """
         TODO: Write this implementation
         """
+        try:
+            value = self._data[self._index]
+        except DynamicArrayException:
+            raise StopIteration
+
+        self._index = self._index + 1
+        return value
         pass
 
 
