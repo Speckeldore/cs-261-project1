@@ -95,7 +95,7 @@ class HashMap:
             self.resize_table(2 * self._capacity)
 
         i = self._hash_function(key)%self._capacity
-        j = 0
+        j = 1
         if self._buckets[i] is not None:
             while self._buckets[i] is not None:
                 if self._buckets[i].key == key:
@@ -159,7 +159,7 @@ class HashMap:
         """
         TODO: Write this implementation
         """
-        k = 0
+        k = 1
         i = self._hash_function(key) % self._capacity
         for j in range(self._capacity):
             if self._buckets[i] == None:
