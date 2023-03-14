@@ -94,25 +94,26 @@ class HashMap:
         if loadF >= 0.5:
             self.resize_table(2 * self._capacity)
 
-        i = self._hash_function(key)%self._capacity
+        i = self._hash_function(key)
         j = 1
-        if self._buckets[i] is not None:
-            while self._buckets[i] is not None:
-                if self._buckets[i].key == key:
-                    self._buckets[i].value = value
+        if self._buckets[i%self._capacity] is not None:
+            k = i
+            while self._buckets[k%self._capacity] is not None:
+                if self._buckets[k%self._capacity].key == key:
+                    self._buckets[k%self._capacity].value = value
                     #print("key already existed", self._buckets[i].key, key)
                     return
-                i = (i + j ** 2) % self._capacity
+                k = (i + j ** 2)
                 j += 1
                 if j > self._capacity:
                     #print("looped through to find empty spot but there are none")
                     raise DynamicArrayException
-            self._buckets[i] = HashEntry(key, value)
+            self._buckets[k%self._capacity] = HashEntry(key, value)
             self._size += 1
             return
         else:
             #print("spot was empty", key, value)
-            self._buckets[i] = HashEntry(key,value)
+            self._buckets[i%self._capacity] = HashEntry(key,value)
             self._size += 1
         pass
 

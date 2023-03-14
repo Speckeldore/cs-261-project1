@@ -1,2 +1,7 @@
-for i in range(50):
-    print('str' + str(i // 3), i * 100)
+i = 7
+j = 0
+while j != 50:
+    k = (i + j ** 2)
+    j += 1
+    print(k%50)
+print(k%50)
