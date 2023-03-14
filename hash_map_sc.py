@@ -185,8 +185,8 @@ def find_mode(da: DynamicArray) -> (DynamicArray, int):
     # if you'd like to use a hash map,
     # use this instance of your Separate Chaining HashMap
     bigVal = DynamicArray()
-    bigVal.append(0)
-    bigTup = (bigVal,0)
+    #bigVal.append(0)
+    bigTup = (bigVal,1)
     map = HashMap(da.length())
     for i in range(da.length()):
         i = da[i]
@@ -201,6 +201,8 @@ def find_mode(da: DynamicArray) -> (DynamicArray, int):
             map.put(i,freq)
         else:
             map.put(i,1)
+        if bigTup[1] == 1:
+            bigTup[0].append(i)
     return bigTup
 # ------------------- BASIC TESTING ---------------------------------------- #
 if __name__ == "__main__":
