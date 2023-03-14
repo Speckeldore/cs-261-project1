@@ -184,7 +184,24 @@ def find_mode(da: DynamicArray) -> (DynamicArray, int):
     """
     # if you'd like to use a hash map,
     # use this instance of your Separate Chaining HashMap
-    map = HashMap()
+    bigVal = DynamicArray()
+    bigVal.append(0)
+    bigTup = (bigVal,0)
+    map = HashMap(da.length())
+    for i in range(da.length()):
+        i = da[i]
+        if map.contains_key(i):
+            freq = map.get(i) + 1
+            if bigTup[1] == freq:
+                bigTup[0].append(i)
+            if bigTup[1] < freq:
+                bigVal = DynamicArray()
+                bigVal.append(i)
+                bigTup = (bigVal,freq)
+            map.put(i,freq)
+        else:
+            map.put(i,1)
+    return bigTup
 # ------------------- BASIC TESTING ---------------------------------------- #
 if __name__ == "__main__":
     print("\nPDF - put example 1")
