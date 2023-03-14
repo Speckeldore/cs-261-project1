@@ -101,6 +101,7 @@ class HashMap:
             while self._buckets[k] is not None:
                 if self._buckets[k].key == key:
                     self._buckets[k].value = value
+                    self._buckets[k].is_tombstone = False
                     #print("key already existed", self._buckets[i].key, key)
                     return
                 k = (i + j ** 2)%self._capacity
@@ -165,7 +166,7 @@ class HashMap:
         for j in range(self._capacity):
             if self._buckets[i] == None:
                 return None
-            if self._buckets[i].key == key:
+            if self._buckets[i].key == key and self._buckets[i].is_tombstone == False:
                 return self._buckets[i].value
             i = (i + k ** 2) % self._capacity
             k += 1
