@@ -143,7 +143,7 @@ class HashMap:
         TODO: Write this implementation
         """
         "resize table was called"
-        if new_capacity < 1:
+        if new_capacity < self._size or new_capacity < 1:
             return
         if self._is_prime(new_capacity) is False:
             new_capacity = self._next_prime(new_capacity)
