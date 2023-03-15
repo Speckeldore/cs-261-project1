@@ -145,6 +145,7 @@ class HashMap:
             return
         if self._is_prime(new_capacity) is False:
             new_capacity = self._next_prime(new_capacity)
+
         old_buckets = self._buckets
         self._capacity = new_capacity
         self.clear()
@@ -163,12 +164,13 @@ class HashMap:
         """
         k = 1
         i = self._hash_function(key) % self._capacity
+        b= i
         for j in range(self._capacity):
-            if self._buckets[i] == None:
+            if self._buckets[b] == None:
                 return None
-            if self._buckets[i].key == key and self._buckets[i].is_tombstone == False:
-                return self._buckets[i].value
-            i = (i + k ** 2) % self._capacity
+            if self._buckets[b].key == key and self._buckets[b].is_tombstone == False:
+                return self._buckets[b].value
+            b = (i + k ** 2) % self._capacity
             k += 1
         pass
 
@@ -178,12 +180,13 @@ class HashMap:
         """
         k = 0
         i = self._hash_function(key) % self._capacity
+        b = i
         for j in range(self._capacity):
-            if self._buckets[i] == None:
+            if self._buckets[b] == None:
                 return False
-            if self._buckets[i].key == key:
+            if self._buckets[b].key == key:
                 return True
-            i = (i + k ** 2) % self._capacity
+            b = (i + k ** 2) % self._capacity
             k += 1
         return False
         pass
