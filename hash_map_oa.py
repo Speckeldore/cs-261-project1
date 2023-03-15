@@ -201,7 +201,7 @@ class HashMap:
         for j in range(self._capacity):
             if self._buckets[b] == None:
                 return
-            if self._buckets[b].key ==  key:
+            if self._buckets[b].key ==  key and self._buckets[b].is_tombstone == False:
                 self._buckets[b].is_tombstone = True
                 self._size += -1
                 return
