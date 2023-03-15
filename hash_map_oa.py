@@ -195,6 +195,16 @@ class HashMap:
         """
         TODO: Write this implementation
         """
+        k = 0
+        i = self._hash_function(key) % self._capacity
+        b = i
+        for j in range(self._capacity):
+            if self._buckets[b] == None:
+                return
+            if self._buckets[b].key == key:
+                self._buckets[b].is_tombstone = True
+            b = (i + k ** 2) % self._capacity
+            k += 1
         pass
 
     def clear(self) -> None:
