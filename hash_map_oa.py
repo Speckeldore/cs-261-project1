@@ -201,9 +201,10 @@ class HashMap:
         for j in range(self._capacity):
             if self._buckets[b] == None:
                 return
-            if self._buckets[b].key == key:
+            if self._buckets[b].key ==  key:
                 self._buckets[b].is_tombstone = True
                 self._size += -1
+                return
             b = (i + k ** 2) % self._capacity
             k += 1
         pass
