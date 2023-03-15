@@ -247,13 +247,15 @@ class HashMap:
         TODO: Write this implementation
         """
         try:
-            value = self._data[self._index]
+            i = 0
+            while self._buckets[i] is None or self._buckets[i].is_tombstone is True:
+                i += 1
+            value = self._data[i]
         except DynamicArrayException:
             raise StopIteration
 
         self._index = self._index + 1
         return value
-        pass
 
 
 # ------------------- BASIC TESTING ---------------------------------------- #
