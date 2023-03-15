@@ -225,6 +225,12 @@ class HashMap:
         """
         TODO: Write this implementation
         """
+        DA = DynamicArray()
+        for i in range(self._capacity):
+            if self._buckets[i] is not None:
+                if self._buckets[i].is_tombstone == False:
+                    DA.append((self._buckets[i].key,self._buckets[i].value))
+        return DA
         pass
 
     def __iter__(self):
