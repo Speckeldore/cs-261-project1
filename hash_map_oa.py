@@ -237,6 +237,7 @@ class HashMap:
         """
         TODO: Write this implementation
         """
+        self._actual = 0
         self._index = 0
 
         return self
@@ -246,11 +247,13 @@ class HashMap:
         """
         TODO: Write this implementation
         """
+
         try:
-            i = 0
-            while self._buckets[i] is None or self._buckets[i].is_tombstone is True:
-                i += 1
-            value = self._data[i]
+            for i in range(self._capacity):
+                self._actual += 1
+                if self._buckets[self._actual] is not None and self._buckets[self._actual].is_tombstone == False:
+                    value = self._buckets[self._actual]
+                    break
         except DynamicArrayException:
             raise StopIteration
 
