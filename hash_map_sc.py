@@ -3,7 +3,7 @@
 # Course: CS261 - Data Structures
 # Assignment: 6
 # Due Date: 3/17
-# Description: Hash map thing
+# Description: Hash map with linked lists for collisions
 from a6_include import (DynamicArray, LinkedList,
                         hash_function_1, hash_function_2)
 class HashMap:
@@ -74,6 +74,8 @@ class HashMap:
         """
         TODO: Write this implementation
         This method updates the key/value pair in the hash map
+        it resizes if neccesary
+        it then targets the deisignated linked list and the it either updates the value or inserts a new one
         """
         #simply adding the value
         loadF = self._size / self._capacity
@@ -96,31 +98,37 @@ class HashMap:
     def empty_buckets(self) -> int:
         """
         TODO: Write this implementation
+        it counts the linked lists that have no length
         """
         emp = 0
         for i in range(self._capacity):
             if self._buckets[i].length() == 0:
                 emp +=1
         return emp
-        pass
+
     def table_load(self) -> float:
         """
         TODO: Write this implementation
+        simply calculates these variables deivided and returns it
         """
         return self._size/self._capacity
-        pass
+
     def clear(self) -> None:
         """
         TODO: Write this implementation
+        creates a new dynamic area for vairbale buckets resets size to 0 and then it appends Linked lists so
+        that the capcity is still the same
         """
         self._buckets = DynamicArray()
         self._size = 0
         for _ in range(self._capacity):
             self._buckets.append(LinkedList())
-        pass
+
     def resize_table(self, new_capacity: int) -> None:
         """
         TODO: Write this implementation
+        checks to see if new capcity is prime
+        saves the old dynamic array and rehashes these values into the new array self._buckets
         """''
         if new_capacity < 1:
             return
@@ -139,6 +147,7 @@ class HashMap:
     def get(self, key: str):
         """
         TODO: Write this implementation
+        if the value for that key exist it returns the value
         """
 
         LL = self._buckets[self._hash_function(key)%self._capacity]
@@ -148,6 +157,7 @@ class HashMap:
     def contains_key(self, key: str) -> bool:
         """
         TODO: Write this implementation
+        checkt to see if the deisgnated linked list contains the actual input key
         """
         LL = self._buckets[self._hash_function(key) % self._capacity]
         if LL.contains(key) != None:
@@ -161,6 +171,7 @@ class HashMap:
     def remove(self, key: str) -> None:
         """
         TODO: Write this implementation
+        if the linked list of designates key existed the value is removed and sice is decremented
         """
         LL = self._buckets[self._hash_function(key)%self._capacity]
         if LL.contains(key) is not None:
@@ -170,6 +181,7 @@ class HashMap:
     def get_keys_and_values(self) -> DynamicArray:
         """
         TODO: Write this implementation
+        gathers the key value pair as a tuple and appends it to a new array that will be returned
         """
         DA = DynamicArray()
         for i in range(self._capacity):
@@ -181,6 +193,10 @@ class HashMap:
 def find_mode(da: DynamicArray) -> (DynamicArray, int):
     """
     TODO: Write this implementation
+    as it puts values into a hash map it uses the
+    the actual value number as a key and its value becomes the frequency
+    we compare each value we put into the hashmap against our current mode
+    and update it if neccesary
     """
     # if you'd like to use a hash map,
     # use this instance of your Separate Chaining HashMap

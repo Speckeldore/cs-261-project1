@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Skyler Santos
+# OSU Email: santossk@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 6
+# Due Date: 3/17
+# Description: Has map with probing for collisions
 
 from a6_include import (DynamicArray, DynamicArrayException, HashEntry,
                         hash_function_1, hash_function_2)
@@ -88,6 +88,11 @@ class HashMap:
     def put(self, key: str, value: object) -> None:
         """
         TODO: Write this implementation
+
+        resizes the dynamic array if neccesary
+
+        it indexes first to the first key mapped by function does some comparisons
+        is the actual key values math it replaces the value else it probes until it reaches a none spot
         """
         #print("Put was used", key, value)
 
@@ -123,6 +128,7 @@ class HashMap:
     def table_load(self) -> float:
         """
         TODO: Write this implementation
+        loads up the self variables and returns the divisor of the two
         """
         return self._size/self._capacity
         pass
@@ -130,6 +136,7 @@ class HashMap:
     def empty_buckets(self) -> int:
         """
         TODO: Write this implementation
+        counts up the buckets that are None in the dynamic array
         """
         emp = 0
         for i in range(self._capacity):
@@ -141,6 +148,9 @@ class HashMap:
     def resize_table(self, new_capacity: int) -> None:
         """
         TODO: Write this implementation
+        compares to see if nex capacity is prime
+        creates a new self._buckets array and savesw the old array
+        it then rehashes the values into our new array with its new capacity
         """
         "resize table was called"
         if new_capacity < self._size or new_capacity < 1:
@@ -163,6 +173,9 @@ class HashMap:
     def get(self, key: str) -> object:
         """
         TODO: Write this implementation
+        grabs the value that is associated with the given key
+        indexes until it reaches an object compares keys if they match it returns value
+        else it keep probing
         """
         k = 1
         i = self._hash_function(key) % self._capacity
@@ -179,6 +192,7 @@ class HashMap:
     def contains_key(self, key: str) -> bool:
         """
         TODO: Write this implementation
+        indexes the function mapped key comparing the given object key to our requested key if they do not match it probes until it reaches a none
         """
         k = 0
         i = self._hash_function(key) % self._capacity
@@ -196,6 +210,8 @@ class HashMap:
     def remove(self, key: str) -> None:
         """
         TODO: Write this implementation
+        probes for the given key if the actual key values match it will update the tombstone value
+        this also updates self.size
         """
         k = 0
         i = self._hash_function(key) % self._capacity
@@ -214,6 +230,7 @@ class HashMap:
     def clear(self) -> None:
         """
         TODO: Write this implementation
+        creates a new dynamic array updates the capacity and resets the size
         """
         self._buckets = DynamicArray()
         self._size = 0
@@ -224,6 +241,7 @@ class HashMap:
     def get_keys_and_values(self) -> DynamicArray:
         """
         TODO: Write this implementation
+        returns a dynamic array that indexes through the array and grabs tuple pairs of the key value pair
         """
         DA = DynamicArray()
         for i in range(self._capacity):
@@ -236,6 +254,7 @@ class HashMap:
     def __iter__(self):
         """
         TODO: Write this implementation
+        creates the two indexing variables
         """
         self._actual = 0
         self._index = 0
@@ -246,6 +265,7 @@ class HashMap:
     def __next__(self):
         """
         TODO: Write this implementation
+        for loops throught the range looking at each value and updating value and updating index if the value exists and is not a tombstone
         """
 
         try:
